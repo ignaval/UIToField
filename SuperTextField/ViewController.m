@@ -131,7 +131,7 @@ NSString *blankSpace = @" ";
     
     if ([recipient rangeOfString:@"<"].location == NSNotFound || [recipient rangeOfString:@">"].location == NSNotFound) {
         //if it was manually entered, i copy the contents to the address
-        recipient = [NSString stringWithFormat:@"%@ <%@>",recipient,recipient];
+        recipient = [NSString stringWithFormat:@"%@<%@>",recipient,recipient];
     }
     
 	RecipientViewCell *recipientCell = [[[RecipientViewCell alloc] initWithTitle:recipient] autorelease];
@@ -424,7 +424,7 @@ NSString *blankSpace = @" ";
 {
     UITableViewCell * cell = [tableView cellForRowAtIndexPath:indexPath];
     
-	NSString * recipient = [NSString stringWithFormat:@"%@ <%@>",cell.textLabel.text,cell.detailTextLabel.text];
+	NSString * recipient = [NSString stringWithFormat:@"%@<%@>",cell.textLabel.text,cell.detailTextLabel.text];
 	
     [self addNewRecipient:recipient];
     

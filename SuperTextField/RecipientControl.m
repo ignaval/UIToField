@@ -9,7 +9,8 @@
 #import "RecipientControl.h"
 #import "RecipientViewCell.h"
 
-#define	kLeftInset 6;
+#define	kLeftInset 6
+#define kOriginShift 9
 
 @implementation RecipientControl
 @synthesize addFromAddressBookButton;
@@ -87,7 +88,7 @@
 			{
 				// it fits in the view so just place it at the layoutPoint
 				subViewRect.origin = cellLayoutPoint;
-				subViewRect.origin.y += 4;
+				subViewRect.origin.y += kOriginShift;
 				subView.frame = subViewRect;
 				cellLayoutPoint.x += subView.frame.size.width + 4;
 			}
@@ -99,7 +100,7 @@
 				{
 					// it fits in the view so just place it at the layoutPoint
 					subViewRect.origin = cellLayoutPoint;
-					subViewRect.origin.y += 4;
+					subViewRect.origin.y += kOriginShift;
 					subView.frame = subViewRect;
 					cellLayoutPoint.x += subView.frame.size.width + 4;
 					
@@ -119,7 +120,7 @@
 						neededRows ++;
 						
 						subViewRect.origin = cellLayoutPoint;
-						subViewRect.origin.y += 4;
+						subViewRect.origin.y += kOriginShift;
 						subView.frame = subViewRect;	
 						cellLayoutPoint.x += subView.frame.size.width + 4;
 					}
@@ -132,7 +133,7 @@
 						if (layoutViewCount == 1) 
 						{
 							subViewRect.origin = cellLayoutPoint;
-							subViewRect.origin.y += 4;
+							subViewRect.origin.y += kOriginShift;
 							subViewRect.size.width = self.frame.size.width - cellLayoutPoint.x - 4;
 							subView.frame = subViewRect;
 							
@@ -147,7 +148,7 @@
 							neededRows ++;
 							
 							subViewRect.origin = cellLayoutPoint;
-							subViewRect.origin.y += 4;
+							subViewRect.origin.y += kOriginShift;
 							subViewRect.size.width = self.frame.size.width - cellLayoutPoint.x - 4;
 							subView.frame = subViewRect;
 							cellLayoutPoint.x += subViewRect.size.width + 4;

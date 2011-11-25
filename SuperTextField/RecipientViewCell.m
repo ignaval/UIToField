@@ -9,7 +9,7 @@
 #import "RecipientViewCell.h"
 #define	kHorzInset	6
 #define	kVertInset	2
-#define kFontSize 13.0
+#define kFontSize 15.0
 
 #define kNormalStrokeColor [UIColor colorWithRed:121/256.0 green:133/256.0 blue:217/256.0 alpha:1]
 #define kNormalGradientTop [UIColor colorWithRed:221/256.0 green:231/256.0 blue:248/256.0 alpha:1]
@@ -31,7 +31,7 @@
 	{
         // Initialization code
 		self.cellDisplayTitle = title;
-		UIFont	*textFont = [UIFont boldSystemFontOfSize:kFontSize];
+		UIFont	*textFont = [UIFont systemFontOfSize:kFontSize];
 		CGSize textSize = [self.cellDisplayTitle sizeWithFont:textFont];
 		self.titleSize = textSize;
 		self.opaque = NO;
@@ -40,7 +40,7 @@
 		
 		
 		textSize.width += kHorzInset*2; 
-		self.frame = CGRectMake(0, 0, (textSize.width > 34) ? textSize.width : 34, 24);
+		self.frame = CGRectMake(0, 0, (textSize.width > 34) ? textSize.width : 34, 25);
     }
     return self;
 }
@@ -55,9 +55,8 @@
 - (void)drawRect:(CGRect)rect 
 {
 	
-	CGRect buttonRect = CGRectInset(rect, 1.0, 2.0);
+	CGRect buttonRect = CGRectInset(rect, 1.0, 1.0);
 	buttonRect = CGRectOffset(buttonRect, 0.5, 0.5);
-
 	
 	CGRect textRect = rect;
 
@@ -121,7 +120,7 @@
 		
 		[[UIColor whiteColor] set];
 //		[self.cellImageSelected drawInRect:rect];
-		[self.cellDisplayTitle drawInRect:textRect withFont:[UIFont boldSystemFontOfSize:kFontSize] lineBreakMode:UILineBreakModeTailTruncation];
+		[self.cellDisplayTitle drawInRect:textRect withFont:[UIFont systemFontOfSize:kFontSize] lineBreakMode:UILineBreakModeTailTruncation];
 	}
 	else
 	{
@@ -149,7 +148,7 @@
 		[[UIColor blackColor] set];
 		
 //		[self.cellImageNormal drawInRect:rect];
-		[self.cellDisplayTitle drawInRect:textRect withFont:[UIFont boldSystemFontOfSize:kFontSize] lineBreakMode:UILineBreakModeTailTruncation];
+		[self.cellDisplayTitle drawInRect:textRect withFont:[UIFont systemFontOfSize:kFontSize] lineBreakMode:UILineBreakModeTailTruncation];
 	}
 	
 	CGContextRestoreGState(context);

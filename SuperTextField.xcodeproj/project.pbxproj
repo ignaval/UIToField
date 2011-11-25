@@ -21,6 +21,7 @@
 		FCB8B3B5147ECA7900ABED9A /* ArrayDataModel.m in Sources */ = {isa = PBXBuildFile; fileRef = FCB8B3B4147ECA7900ABED9A /* ArrayDataModel.m */; };
 		FCF2E5B8147F385100A5EAA1 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FCF2E5B5147F383F00A5EAA1 /* QuartzCore.framework */; };
 		FCF2E5BF147F687000A5EAA1 /* ShadowedTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = FCF2E5BE147F687000A5EAA1 /* ShadowedTableView.m */; };
+		FCF5AF3214804C9100D03D86 /* contact-pill.png in Resources */ = {isa = PBXBuildFile; fileRef = FCF5AF3114804C9100D03D86 /* contact-pill.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -48,6 +49,7 @@
 		FCF2E5B5147F383F00A5EAA1 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		FCF2E5BD147F687000A5EAA1 /* ShadowedTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShadowedTableView.h; sourceTree = "<group>"; };
 		FCF2E5BE147F687000A5EAA1 /* ShadowedTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShadowedTableView.m; sourceTree = "<group>"; };
+		FCF5AF3114804C9100D03D86 /* contact-pill.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "contact-pill.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -119,6 +121,7 @@
 		FC017EE0147D646B001B731A /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				FCF5AF3114804C9100D03D86 /* contact-pill.png */,
 				FC017EE1147D646B001B731A /* SuperTextField-Info.plist */,
 				FC017EE2147D646B001B731A /* InfoPlist.strings */,
 				FC017EE5147D646B001B731A /* main.m */,
@@ -179,6 +182,7 @@
 			files = (
 				FC017EE4147D646B001B731A /* InfoPlist.strings in Resources */,
 				FC017EF0147D646B001B731A /* ViewController.xib in Resources */,
+				FCF5AF3214804C9100D03D86 /* contact-pill.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
