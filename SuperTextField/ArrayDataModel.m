@@ -38,7 +38,6 @@
     
     for (NSString * c in [contacts allKeys]) {
         if ([[c lowercaseString] hasPrefix:[searchString lowercaseString]]) {
-            NSLog(@"added: %@",c);
             [self.foundPeople addObject:c];
         }
     }

@@ -9,7 +9,8 @@
 #import "RecipientViewCell.h"
 #define	kHorzInset	6
 #define	kVertInset	2
-#define kFontSize 15.0
+#define kFontSize   15.0
+#define kTextShift  3
 
 #define kNormalStrokeColor [UIColor colorWithRed:121/256.0 green:133/256.0 blue:217/256.0 alpha:1]
 #define kNormalGradientTop [UIColor colorWithRed:221/256.0 green:231/256.0 blue:248/256.0 alpha:1]
@@ -63,13 +64,13 @@
 	if (titleSize.width < rect.size.width)
 	{
 		textRect.origin.x = (rect.size.width - titleSize.width)/2;
-		textRect.origin.y += 4;
+		textRect.origin.y += kTextShift;
 		textRect.size.width = titleSize.width;
 	}
 	else
 	{
 		textRect = CGRectInset(textRect, 6, 0);
-		textRect.origin.y += 4;
+		textRect.origin.y += kTextShift;
 	}
 	
 	CGContextRef context = UIGraphicsGetCurrentContext();	

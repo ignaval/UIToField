@@ -281,7 +281,7 @@ NSString *blankSpace = @" ";
 		if ([textField.text length] > 1)
 		{
             //substring from index 1 to remove the whitespace at the beginning
-            NSLog(@"le paso:%@",[[textField.text substringToIndex:textField.text.length -1] substringFromIndex:1]);
+            //NSLog(@"le paso:%@",[[textField.text substringToIndex:textField.text.length -1] substringFromIndex:1]);
             if ([model foundMatchesForSearchString:[[textField.text substringToIndex:textField.text.length -1] substringFromIndex:1]])
 			{
 				[self showContactMatchListView];
