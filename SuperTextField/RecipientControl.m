@@ -11,6 +11,7 @@
 
 #define	kLeftInset 6
 #define kOriginShift 9
+#define kEntryFieldDefaultWidth 230
 
 @implementation RecipientControl
 @synthesize addFromAddressBookButton;
@@ -103,7 +104,7 @@
 					subViewRect.origin.y += kOriginShift;
 					subView.frame = subViewRect;
 					cellLayoutPoint.x += subView.frame.size.width + 4;
-					
+					NSLog(@"adding line A");
 					// we need to move the point to the next line
 					cellLayoutPoint.x = kLeftInset;
 					cellLayoutPoint.y += growHeight;
@@ -114,6 +115,7 @@
 					// now we need to see if it will fit on a line all by itself
 					if (subViewRect.size.width + 4 < self.frame.size.width)
 					{
+                        NSLog(@"adding line B");
 						// it fits
 						cellLayoutPoint.x = kLeftInset;
 						cellLayoutPoint.y += growHeight;
@@ -136,13 +138,14 @@
 							subViewRect.origin.y += kOriginShift;
 							subViewRect.size.width = self.frame.size.width - cellLayoutPoint.x - 4;
 							subView.frame = subViewRect;
-							
+							NSLog(@"adding line C");
 							cellLayoutPoint.x = kLeftInset;
 							cellLayoutPoint.y += growHeight;
 							neededRows ++;
 						}
 						else
 						{
+                            NSLog(@"adding line D");
 							cellLayoutPoint.x = kLeftInset;
 							cellLayoutPoint.y += growHeight;
 							neededRows ++;
@@ -164,7 +167,7 @@
 	fieldLayoutPoint = cellLayoutPoint;
 	
 	NSInteger remainingWidth = rightInset - fieldLayoutPoint.x;
-	if ( remainingWidth > 150)
+	if ( remainingWidth > 50)
 	{				
 		frameRect = self.entryField.frame;
 		frameRect.origin = fieldLayoutPoint;
@@ -174,7 +177,7 @@
 	else
 	{
 		// it doesn't fit so lets make adjustments
-		
+		NSLog(@"adding line E");
 		fieldLayoutPoint.x = kLeftInset;
 		fieldLayoutPoint.y += growHeight;
 		neededRows ++;
@@ -207,7 +210,26 @@
 		}
 	}
 	
+    if (self.entryField.frame.origin.x < self.toLabel.frame.size.width && !self.entryField.isFirstResponder) {
+        //there is an empty line
+        NSLog(@"hiding");
+        CGRect frameRect = self.entryField.frame;
+        frameRect.origin.x = self.toLabel.frame.origin.x + self.toLabel.frame.size.width +4;
+        frameRect.origin.y = self.toLabel.frame.origin.y + ((neededRows-2) * growHeight);
+        frameRect.size.width = kEntryFieldDefaultWidth;
+        self.entryField.frame = frameRect;
+        
+        frameRect = self.frame;
+        frameRect.size.height = self.defaultHeight + ((neededRows-2) * growHeight);
+        self.frame = frameRect;
+        [self setNeedsDisplay];
+        [delegate recipientViewFrameDidChange];
+    }
 	
+}
+
+-(void)hideEmptyLine{
+    
 }
 
 
