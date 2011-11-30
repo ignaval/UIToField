@@ -12,6 +12,8 @@
 #define	kLeftInset 6
 #define kOriginShift 9
 #define kEntryFieldDefaultWidth 230
+#define keyboardHeightPortrait      216
+#define keyboardHeightLandscape     162
 
 @implementation RecipientControl
 @synthesize addFromAddressBookButton;
@@ -59,6 +61,10 @@
         
         self.selectedRecipientCell.selected = NO;
 		self.selectedRecipientCell = nil;
+        
+        CGRect frameRect = self.frame;
+        frameRect.origin.y = 0;
+        self.frame = frameRect;
         
         [self layoutSubviews];
     }
@@ -124,6 +130,13 @@
 	CGPoint fieldLayoutPoint; 
 	
 	NSInteger growHeight = self.entryField.frame.size.height;
+    NSInteger maxHeight;
+    
+    if ([[UIDevice currentDevice] orientation] == UIInterfaceOrientationPortrait) {
+        maxHeight = self.superview.frame.size.height - keyboardHeightPortrait;
+    }else{
+        maxHeight = self.superview.frame.size.height - keyboardHeightLandscape;
+    }
 	
 	cellLayoutPoint.x += self.toLabel.frame.size.width + 4;
 	NSInteger rightInset = self.addFromAddressBookButton.frame.origin.x - 4;
@@ -247,6 +260,18 @@
 		self.frame = frameRect;
 		[self setNeedsDisplay];
 		//[delegate recipientViewFrameDidChange];
+        
+        if (newHeight > maxHeight) {
+            //move the view up
+            int excess = newHeight - maxHeight;
+            frameRect = self.frame;
+            frameRect.origin.y = -excess - self.defaultHeight;
+            self.frame = frameRect;
+        }else{
+            frameRect = self.frame;
+            frameRect.origin.y = 0;
+            self.frame = frameRect;
+        }
 	}
 	else
 	{

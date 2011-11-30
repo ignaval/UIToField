@@ -201,7 +201,7 @@ NSString *blankSpace = @" ";
         if (self.recipientControl.frame.size.height > self.recipientControl.defaultHeight)
         {
             CGRect frame = self.recipientControl.frame;
-            frame.origin.y -= (frame.size.height - self.recipientControl.defaultHeight);
+            frame.origin.y = -frame.size.height + self.recipientControl.defaultHeight;
             self.recipientControl.frame = frame;
         }
         
