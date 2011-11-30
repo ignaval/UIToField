@@ -86,9 +86,6 @@ NSString *blankSpace = @" ";
     self.contactMatchListView.delegate = self;
     self.contactMatchListView.dataSource = self;
     
-//    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardDidHide) name:UIKeyboardDidHideNotification object:nil];
-//    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillShow) name:UIKeyboardWillShowNotification object:nil];
-    
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
 }
@@ -266,18 +263,6 @@ NSString *blankSpace = @" ";
 	return YES;
 }
 
--(void)keyboardDidHide{
-    if (self.entryField.frame.origin.x < self.recipientControl.toLabel.frame.size.width) {
-        //there is an empty line
-        //[self.recipientControl hideEmptyLine];
-        [self.recipientControl layoutSubviews];
-    }
-}
-
--(void)keyboardWillShow{
-   [self.recipientControl layoutSubviews];
-}
-
 - (void)textFieldDidBeginEditing:(UITextField *)textField
 {
 	if (textField.text.length == 0)
@@ -296,7 +281,7 @@ NSString *blankSpace = @" ";
 		if ([textField.text length] > 1)
 		{
             //substring from index 1 to remove the whitespace at the beginning
-            NSLog(@"le paso:%@",[[textField.text substringToIndex:textField.text.length -1] substringFromIndex:1]);
+            //NSLog(@"le paso:%@",[[textField.text substringToIndex:textField.text.length -1] substringFromIndex:1]);
             if ([model foundMatchesForSearchString:[[textField.text substringToIndex:textField.text.length -1] substringFromIndex:1]])
 			{
 				[self showContactMatchListView];
@@ -328,7 +313,7 @@ NSString *blankSpace = @" ";
 	}
 	else
 	{
-        NSLog(@"le paso:%@",[[textField.text stringByAppendingString:string] substringFromIndex:1]);
+        //NSLog(@"le paso:%@",[[textField.text stringByAppendingString:string] substringFromIndex:1]);
         if ([model foundMatchesForSearchString:[[textField.text stringByAppendingString:string] substringFromIndex:1]])
 		{
 			[self showContactMatchListView];

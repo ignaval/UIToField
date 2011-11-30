@@ -121,6 +121,7 @@
 
 - (void)layoutSubviews
 {
+    NSLog(@"laying subviews...");
 	// we're going to loop through all the view looking for RecipientViewCell views and lay them out within this view.
 	// If there are no RecipientViewCell then nothing will be changed.  The layout process knows about
 	// the three views defined in the xib and will move them as necessary and well as changes the size of this view
@@ -197,7 +198,7 @@
 						{
 							subViewRect.origin = cellLayoutPoint;
 							subViewRect.origin.y += kOriginShift;
-							subViewRect.size.width = self.frame.size.width - cellLayoutPoint.x - 4;
+							subViewRect.size.width = rightInset - cellLayoutPoint.x - 50;
 							subView.frame = subViewRect;
 							NSLog(@"adding line C");
 							cellLayoutPoint.x = kLeftInset;
@@ -221,10 +222,9 @@
 					}
 				}
 			}
+            
+            [subView setNeedsDisplay];
 		}
-        
-        [subView setNeedsDisplay];
-        
 	}
 	
 	fieldLayoutPoint = cellLayoutPoint;
