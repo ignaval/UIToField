@@ -86,8 +86,8 @@ NSString *blankSpace = @" ";
     self.contactMatchListView.delegate = self;
     self.contactMatchListView.dataSource = self;
     
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardDidHide) name:UIKeyboardDidHideNotification object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillShow) name:UIKeyboardWillShowNotification object:nil];
+//    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardDidHide) name:UIKeyboardDidHideNotification object:nil];
+//    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillShow) name:UIKeyboardWillShowNotification object:nil];
     
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
@@ -138,7 +138,7 @@ NSString *blankSpace = @" ";
     }
     
 	RecipientViewCell *recipientCell = [[[RecipientViewCell alloc] initWithTitle:recipient] autorelease];
-	
+
 	[self.recipientControl addSubview:recipientCell];
 	[self.recipientControl setNeedsLayout];
 	
@@ -296,7 +296,7 @@ NSString *blankSpace = @" ";
 		if ([textField.text length] > 1)
 		{
             //substring from index 1 to remove the whitespace at the beginning
-            //NSLog(@"le paso:%@",[[textField.text substringToIndex:textField.text.length -1] substringFromIndex:1]);
+            NSLog(@"le paso:%@",[[textField.text substringToIndex:textField.text.length -1] substringFromIndex:1]);
             if ([model foundMatchesForSearchString:[[textField.text substringToIndex:textField.text.length -1] substringFromIndex:1]])
 			{
 				[self showContactMatchListView];
@@ -328,7 +328,7 @@ NSString *blankSpace = @" ";
 	}
 	else
 	{
-        //NSLog(@"le paso:%@",[[textField.text stringByAppendingString:string] substringFromIndex:1]);
+        NSLog(@"le paso:%@",[[textField.text stringByAppendingString:string] substringFromIndex:1]);
         if ([model foundMatchesForSearchString:[[textField.text stringByAppendingString:string] substringFromIndex:1]])
 		{
 			[self showContactMatchListView];
@@ -386,15 +386,15 @@ NSString *blankSpace = @" ";
 
 - (void)recipientViewCellWasSelected:(RecipientViewCell*)recipientCell;
 {
-	self.entryField.hidden = YES;
-	self.entryField.text = blankSpace;
+//	self.entryField.hidden = YES;
+//	self.entryField.text = blankSpace;
 }
 
 - (void)recipientViewHit;
 {
-	self.recipientControl.selectedRecipientCell = nil;
-	self.entryField.hidden = NO;
-	[self.entryField becomeFirstResponder];
+//	self.recipientControl.selectedRecipientCell = nil;
+//	self.entryField.hidden = NO;
+//	[self.entryField becomeFirstResponder];
 }
 
 #pragma mark TableView Delegate and Data Source Methoids

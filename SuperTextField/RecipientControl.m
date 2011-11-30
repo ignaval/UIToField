@@ -17,6 +17,7 @@
 @synthesize addFromAddressBookButton;
 @synthesize entryField;
 @synthesize toLabel;
+@synthesize namesLabel;
 @synthesize delegate;
 @dynamic selectedRecipientCell;
 @synthesize defaultHeight;
@@ -31,8 +32,55 @@
 - (void)awakeFromNib;
 {
 	self.defaultHeight = self.frame.size.height;
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillHide) name:UIKeyboardWillHideNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillShow) name:UIKeyboardWillShowNotification object:nil];
 	
 }
+
+-(void)keyboardWillHide{
+    NSLog(@"called didHide");
+    //show one line name list
+    if ([self.entryField isFirstResponder]) {
+        self.namesLabel.text = @"";
+        
+        for (UIView *subView in self.subviews){
+            if ([subView isKindOfClass:[RecipientViewCell class]]){
+                subView.hidden = YES;
+                self.namesLabel.text = [NSString stringWithFormat:@"%@%@, ",self.namesLabel.text,((RecipientViewCell *)subView).cellDisplayTitle];
+            }
+            
+        }
+        
+        if ([self.namesLabel.text length] > 0) {
+            self.namesLabel.text = [self.namesLabel.text substringToIndex:(self.namesLabel.text.length-2)];
+            self.namesLabel.hidden = NO;
+        }
+        
+        self.selectedRecipientCell.selected = NO;
+		self.selectedRecipientCell = nil;
+        
+        [self layoutSubviews];
+    }
+}
+
+-(void)keyboardWillShow{
+    //show contact pills
+    NSLog(@"called willshow");
+    if ([self.entryField isFirstResponder]) {
+        for (UIView *subView in self.subviews){
+            if ([subView isKindOfClass:[RecipientViewCell class]]){
+                subView.hidden = NO;
+            }
+        }
+        
+        self.namesLabel.hidden = YES;
+        
+        [self layoutSubviews];
+    }
+    
+}
+
 - (void)dealloc 
 {
 	self.addFromAddressBookButton = nil;
@@ -41,6 +89,10 @@
 	self.selectedRecipientCell = nil;
 
     [super dealloc];
+}
+
+-(void)viewDidLoad{
+    NSLog(@"called viewDidLoad");
 }
 
 - (void)drawRect:(CGRect)rect 
@@ -80,7 +132,7 @@
 	NSInteger layoutViewCount = 0;
 	for (UIView *subView in self.subviews)
 	{
-		if ([subView isKindOfClass:[RecipientViewCell class]])
+		if ([subView isKindOfClass:[RecipientViewCell class]] && !subView.hidden)
 		{
 			layoutViewCount ++;
 			subViewRect = subView.frame;
@@ -97,18 +149,14 @@
 			{
 				// it doesn't fit on the current line with the add contact button, let check to see
 				// if it can with if we move the add button
-				if (cellLayoutPoint.x + subViewRect.size.width + 4 < self.frame.size.width - 4)
+				//if (cellLayoutPoint.x + subViewRect.size.width + 4 < self.frame.size.width - 4)
+                if (rightInset - (cellLayoutPoint.x + subViewRect.size.width) > 50)
 				{
 					// it fits in the view so just place it at the layoutPoint
 					subViewRect.origin = cellLayoutPoint;
 					subViewRect.origin.y += kOriginShift;
 					subView.frame = subViewRect;
 					cellLayoutPoint.x += subView.frame.size.width + 4;
-					NSLog(@"adding line A");
-					// we need to move the point to the next line
-					cellLayoutPoint.x = kLeftInset;
-					cellLayoutPoint.y += growHeight;
-					neededRows ++;
 				}
 				else
 				{
@@ -161,8 +209,10 @@
 				}
 			}
 		}
+        
+        [subView setNeedsDisplay];
+        
 	}
-	
 	
 	fieldLayoutPoint = cellLayoutPoint;
 	
@@ -196,7 +246,7 @@
 		frameRect.size.height = self.defaultHeight + ((neededRows-1) * growHeight);
 		self.frame = frameRect;
 		[self setNeedsDisplay];
-		[delegate recipientViewFrameDidChange];
+		//[delegate recipientViewFrameDidChange];
 	}
 	else
 	{
@@ -206,25 +256,25 @@
 			frameRect.size.height = self.defaultHeight;
 			self.frame = frameRect;
 			[self setNeedsDisplay];
-			[delegate recipientViewFrameDidChange];
+			//[delegate recipientViewFrameDidChange];
 		}
 	}
 	
-    if (self.entryField.frame.origin.x < self.toLabel.frame.size.width && !self.entryField.isFirstResponder) {
-        //there is an empty line
-        NSLog(@"hiding");
-        CGRect frameRect = self.entryField.frame;
-        frameRect.origin.x = self.toLabel.frame.origin.x + self.toLabel.frame.size.width +4;
-        frameRect.origin.y = self.toLabel.frame.origin.y + ((neededRows-2) * growHeight);
-        frameRect.size.width = kEntryFieldDefaultWidth;
-        self.entryField.frame = frameRect;
-        
-        frameRect = self.frame;
-        frameRect.size.height = self.defaultHeight + ((neededRows-2) * growHeight);
-        self.frame = frameRect;
-        [self setNeedsDisplay];
-        [delegate recipientViewFrameDidChange];
-    }
+//    if (self.entryField.frame.origin.x < self.toLabel.frame.size.width && !self.entryField.isFirstResponder) {
+//        //there is an empty line
+//        NSLog(@"hiding");
+//        CGRect frameRect = self.entryField.frame;
+//        frameRect.origin.x = self.toLabel.frame.origin.x + self.toLabel.frame.size.width +4;
+//        frameRect.origin.y = self.toLabel.frame.origin.y + ((neededRows-2) * growHeight);
+//        frameRect.size.width = kEntryFieldDefaultWidth;
+//        self.entryField.frame = frameRect;
+//        
+//        frameRect = self.frame;
+//        frameRect.size.height = self.defaultHeight + ((neededRows-2) * growHeight);
+//        self.frame = frameRect;
+//        [self setNeedsDisplay];
+//        [delegate recipientViewFrameDidChange];
+//    }
 	
 }
 
@@ -240,7 +290,7 @@
 	BOOL	cellHit = NO;
 	for (UIView *subView in self.subviews)
 	{
-		if ([subView isKindOfClass:[RecipientViewCell class]])
+		if ([subView isKindOfClass:[RecipientViewCell class]] && !subView.hidden)
 		{
 			if ( CGRectContainsPoint(subView.frame, [touch locationInView:self]) )
 			{
@@ -256,7 +306,9 @@
 	{
 		self.selectedRecipientCell.selected = NO;
 		self.selectedRecipientCell = nil;
-		[delegate recipientViewHit];
+        self.entryField.hidden = NO;
+        [self.entryField becomeFirstResponder];
+		//[delegate recipientViewHit];
 	}
 			
 	return NO;
@@ -276,10 +328,12 @@
 		selectedRecipientCell = [cell retain];
 		[self.selectedRecipientCell setNeedsDisplay];
 
-		
-		if (cell)
-			[delegate recipientViewCellWasSelected:cell];
-	}
+        if (cell) {
+            self.entryField.hidden = YES;
+            self.entryField.text = @" ";	
+        }
+        
+    }
 }
 
 @end

@@ -20,6 +20,7 @@
 	UIButton		*addFromAddressBookButton;
 	UITextField		*entryField;
 	UILabel			*toLabel;
+    UILabel         *namesLabel;
 	id<RecipientControlDelegate> delegate;
 	RecipientViewCell	*selectedRecipientCell;
 	CGFloat			defaultHeight;
@@ -29,6 +30,7 @@
 @property (nonatomic, retain) IBOutlet UIButton			*addFromAddressBookButton;
 @property (nonatomic, retain) IBOutlet UITextField		*entryField;
 @property (nonatomic, retain) IBOutlet UILabel			*toLabel;
+@property (nonatomic, retain) IBOutlet UILabel			*namesLabel;
 @property (nonatomic, assign) IBOutlet id<RecipientControlDelegate> delegate;
 
 @property (nonatomic, retain) RecipientViewCell			*selectedRecipientCell;
