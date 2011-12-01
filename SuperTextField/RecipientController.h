@@ -17,25 +17,25 @@
 @class RecipientViewCell;
 @protocol DataModelDelegate;
 
-//@protocol DataModelDelegate <NSObject>
-//
-//@required
-//
-//- (BOOL)foundMatchesForSearchString:(NSString*)searchString;
-//- (NSInteger)countForSearchMatches;
-//- (NSString*)personNameForIndex:(NSInteger)index;
-//- (NSString*)personAddressForIndex:(NSInteger)index;
-//
-//- (void)addRecipient:(Recipient*)newRecipient;
-//- (void)removeRecipient:(Recipient*)recipient;
-//
-//- (Recipient*)lastRecipient;
-//
-//@property (nonatomic, readonly) NSArray *recipients;
-//
-//@end
+@protocol DataModelDelegate <NSObject>
 
-@interface RecipientController : UIViewController <UITextFieldDelegate, UITableViewDelegate, UITableViewDataSource>
+@required
+
+- (BOOL)foundMatchesForSearchString:(NSString*)searchString;
+- (NSInteger)countForSearchMatches;
+- (NSString*)personNameForIndex:(NSInteger)index;
+- (NSString*)personAddressForIndex:(NSInteger)index;
+
+- (void)addRecipient:(Recipient*)newRecipient;
+- (void)removeRecipient:(Recipient*)recipient;
+
+- (Recipient*)lastRecipient;
+
+@property (nonatomic, readonly) NSArray *recipients;
+
+@end
+
+@interface RecipientController : UIViewController <UITextFieldDelegate, UITableViewDelegate, UITableViewDataSource, UIScrollViewDelegate>
 {
 	UIButton		*addFromAddressBookButton;
 	UITextField		*entryField;
@@ -50,6 +50,7 @@
     id <DataModelDelegate> model;
 }
 
+-(void)setUpContactMatchView;
 
 @property (nonatomic, retain) IBOutlet UIButton			*addFromAddressBookButton;
 @property (nonatomic, retain) IBOutlet UITextField		*entryField;

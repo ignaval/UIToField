@@ -79,83 +79,10 @@
 	
 	[CATransaction commit];
 	
-//	NSArray *indexPathsForVisibleRows = [self indexPathsForVisibleRows];
-//	if ([indexPathsForVisibleRows count] == 0)
-//	{
-//		[topShadow removeFromSuperlayer];
-//		[topShadow release];
-//		topShadow = nil;
-//		[bottomShadow removeFromSuperlayer];
-//		[bottomShadow release];
-//		bottomShadow = nil;
-//		return;
-//	}
-//	
-//	NSIndexPath *firstRow = [indexPathsForVisibleRows objectAtIndex:0];
-//	if ([firstRow section] == 0 && [firstRow row] == 0)
-//	{
-//		UIView *cell = [self cellForRowAtIndexPath:firstRow];
-//		if (!topShadow)
-//		{
-//			topShadow = [[self shadowAsInverse:YES] retain];
-//			[cell.layer insertSublayer:topShadow atIndex:0];
-//		}
-//		else if ([cell.layer.sublayers indexOfObjectIdenticalTo:topShadow] != 0)
-//		{
-//			[cell.layer insertSublayer:topShadow atIndex:0];
-//		}
-//
-//		CGRect shadowFrame = topShadow.frame;
-//		shadowFrame.size.width = cell.frame.size.width;
-//		shadowFrame.origin.y = -SHADOW_INVERSE_HEIGHT;
-//		topShadow.frame = shadowFrame;
-//	}
-//	else
-//	{
-//		[topShadow removeFromSuperlayer];
-//		[topShadow release];
-//		topShadow = nil;
-//	}
-//
-//	NSIndexPath *lastRow = [indexPathsForVisibleRows lastObject];
-//	if ([lastRow section] == [self numberOfSections] - 1 &&
-//		[lastRow row] == [self numberOfRowsInSection:[lastRow section]] - 1)
-//	{
-//		UIView *cell =
-//			[self cellForRowAtIndexPath:lastRow];
-//		if (!bottomShadow)
-//		{
-//			bottomShadow = [[self shadowAsInverse:NO] retain];
-//			[cell.layer insertSublayer:bottomShadow atIndex:0];
-//		}
-//		else if ([cell.layer.sublayers indexOfObjectIdenticalTo:bottomShadow] != 0)
-//		{
-//			[cell.layer insertSublayer:bottomShadow atIndex:0];
-//		}
-//
-//		CGRect shadowFrame = bottomShadow.frame;
-//		shadowFrame.size.width = cell.frame.size.width;
-//		shadowFrame.origin.y = cell.frame.size.height;
-//		bottomShadow.frame = shadowFrame;
-//	}
-//	else
-//	{
-//		[bottomShadow removeFromSuperlayer];
-//		[bottomShadow release];
-//		bottomShadow = nil;
-//	}
 }
 
-//
-// dealloc
-//
-// Releases instance memory.
-//
 - (void)dealloc
 {
-	//[topShadow release];
-	//[bottomShadow release];
-
 	[super dealloc];
 }
 

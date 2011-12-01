@@ -61,6 +61,51 @@ NSString *blank = @" ";
     
     self.entryField.text = blank;
     
+    self.defaultHeight = self.view.frame.size.height;
+    
+    UITapGestureRecognizer * tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleTap:)];
+    [self.view addGestureRecognizer:tap];
+    [tap release];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillHide) name:UIKeyboardWillHideNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillShow) name:UIKeyboardWillShowNotification object:nil];
+}
+
+- (void)handleTap:(UITapGestureRecognizer *)sender {
+    if (sender.state == UIGestureRecognizerStateEnded){ 
+        
+        if ([sender numberOfTouches] != 1) {
+            return;
+        }
+        
+        BOOL	cellHit = NO;
+        
+        for (UIView *subView in self.view.subviews)
+        {
+            if ([subView isKindOfClass:[RecipientViewCell class]] && !subView.hidden)
+            {
+                if ( CGRectContainsPoint(subView.frame, [sender locationInView:self.view]) )
+                {
+                    self.selectedRecipientCell.selected = NO;
+                    self.selectedRecipientCell = (RecipientViewCell*)subView;
+                    self.selectedRecipientCell.selected = YES;
+                    cellHit = YES;
+                }
+            }
+        }
+        
+        if (cellHit == NO)
+        {
+            self.selectedRecipientCell.selected = NO;
+            self.selectedRecipientCell = nil;
+            self.entryField.hidden = NO;
+            [self.entryField becomeFirstResponder];
+            //[delegate recipientViewHit];
+        }
+    } 
+}
+
+-(void)setUpContactMatchView{
     CGRect frameRect = self.view.superview.bounds;
     frameRect.origin.y = self.view.frame.size.height - self.view.frame.origin.y;
     
@@ -87,11 +132,6 @@ NSString *blank = @" ";
     self.contactMatchListView.hidden = YES;
     self.contactMatchListView.delegate = self;
     self.contactMatchListView.dataSource = self;
-    
-    self.defaultHeight = self.view.frame.size.height;
-    
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillHide) name:UIKeyboardWillHideNotification object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillShow) name:UIKeyboardWillShowNotification object:nil];
 }
 
 - (void)viewDidUnload
@@ -120,24 +160,6 @@ NSString *blank = @" ";
     [super dealloc];
 }
 
-//- (void)drawRect:(CGRect)rect 
-//{
-//	[super drawRect:rect];
-//	CGContextRef context = UIGraphicsGetCurrentContext();	
-//	
-//	CGContextSaveGState(context);
-//	
-//	CGContextMoveToPoint(context, rect.origin.x, rect.origin.y + rect.size.height );
-//	CGContextAddLineToPoint(context, rect.origin.x + rect.size.width, rect.origin.y + rect.size.height );
-//	
-//	[[UIColor	colorWithWhite:0.75 alpha:1.0] set];
-//	CGContextSetLineWidth (context, 1.0);
-//	CGContextStrokePath(context);
-//	
-//	CGContextRestoreGState(context);
-//	
-//}
-
 - (void)layoutSubviews
 {
     NSLog(@"laying subviews...");
@@ -153,9 +175,9 @@ NSString *blank = @" ";
     NSInteger maxHeight;
     
     if ([[UIDevice currentDevice] orientation] == UIInterfaceOrientationPortrait) {
-        maxHeight = self.view.superview.frame.size.height - keyboardHeightPortrait;
+        maxHeight = self.view.superview.frame.size.height - keyboardHeightPortrait - self.defaultHeight;
     }else{
-        maxHeight = self.view.superview.frame.size.height - keyboardHeightLandscape;
+        maxHeight = self.view.superview.frame.size.height - keyboardHeightLandscape - self.defaultHeight;
     }
 	
 	cellLayoutPoint.x += self.toLabel.frame.size.width + 4;
@@ -268,26 +290,33 @@ NSString *blank = @" ";
 		frameRect.size.height = self.entryField.frame.size.height;
 		self.entryField.frame = frameRect;
 	}
-	
-	
+    
+    UIScrollView * view = (UIScrollView *)self.view;
+    frameRect = view.frame;
+    view.contentSize = frameRect.size;
+    
 	CGFloat newHeight = neededRows * growHeight;
 	if ( newHeight > self.defaultHeight )
 	{
-		frameRect = self.view.frame;
-		frameRect.size.height = self.defaultHeight + ((neededRows-1) * growHeight);
-		
         NSLog(@"new: %f max: %d",newHeight,maxHeight);
         if (newHeight > maxHeight) {
-            //move the view up
-            NSLog(@"sASasASasASasdasd");
-            float excess = newHeight - maxHeight;
-            frameRect.origin.y = -excess - self.defaultHeight;
-            NSLog(@"lo pase a y: %f",frameRect.origin.y);
+            //scroll down
+            view.contentSize = CGSizeMake(frameRect.size.width, newHeight);
+            [view scrollRectToVisible:CGRectMake(0, view.contentSize.height - self.defaultHeight, view.contentSize.width, self.defaultHeight) animated:YES];
+            
+//            NSLog(@"y: %f, w: %f h: %f",view.contentSize.height - self.defaultHeight,view.contentSize.width,self.defaultHeight);
         }else{
-            frameRect.origin.y = 0;
+            frameRect.size.height = self.defaultHeight + ((neededRows-1) * growHeight);
+            view.contentSize = frameRect.size;
+            
         }
         
         self.view.frame = frameRect;
+        
+        CGRect buttonFrame = self.addFromAddressBookButton.frame;
+        buttonFrame.origin = CGPointMake(rightInset + 4, view.contentSize.height - self.defaultHeight + kOriginShift);
+        self.addFromAddressBookButton.frame = buttonFrame;
+
 	}
 	else
 	{
@@ -300,22 +329,6 @@ NSString *blank = @" ";
 			//[delegate recipientViewFrameDidChange];
 		}
 	}
-	
-    //    if (self.entryField.frame.origin.x < self.toLabel.frame.size.width && !self.entryField.isFirstResponder) {
-    //        //there is an empty line
-    //        NSLog(@"hiding");
-    //        CGRect frameRect = self.entryField.frame;
-    //        frameRect.origin.x = self.toLabel.frame.origin.x + self.toLabel.frame.size.width +4;
-    //        frameRect.origin.y = self.toLabel.frame.origin.y + ((neededRows-2) * growHeight);
-    //        frameRect.size.width = kEntryFieldDefaultWidth;
-    //        self.entryField.frame = frameRect;
-    //        
-    //        frameRect = self.frame;
-    //        frameRect.size.height = self.defaultHeight + ((neededRows-2) * growHeight);
-    //        self.frame = frameRect;
-    //        [self setNeedsDisplay];
-    //        [delegate recipientViewFrameDidChange];
-    //    }
 	
 }
 
@@ -363,70 +376,6 @@ NSString *blank = @" ";
         
         [self layoutSubviews];
     }
-    
-}
-
-#pragma mark control tracking methods
-- (BOOL)beginTrackingWithTouch:(UITouch *)touch withEvent:(UIEvent *)event
-{
-	//	BOOL sRet = [super beginTrackingWithTouch:touch withEvent:event];
-	BOOL	cellHit = NO;
-	for (UIView *subView in self.view.subviews)
-	{
-		if ([subView isKindOfClass:[RecipientViewCell class]] && !subView.hidden)
-		{
-			if ( CGRectContainsPoint(subView.frame, [touch locationInView:self.view]) )
-			{
-				self.selectedRecipientCell.selected = NO;
-				self.selectedRecipientCell = (RecipientViewCell*)subView;
-				self.selectedRecipientCell.selected = YES;
-				cellHit = YES;
-			}
-		}
-	}
-	
-	if (cellHit == NO)
-	{
-		self.selectedRecipientCell.selected = NO;
-		self.selectedRecipientCell = nil;
-        self.entryField.hidden = NO;
-        [self.entryField becomeFirstResponder];
-		//[delegate recipientViewHit];
-	}
-    
-	return NO;
-}
-
--(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event{
-    
-    if ([touches count] != 1) {
-        return;
-    }
-    
-	BOOL	cellHit = NO;
-    UITouch * touch = [touches anyObject];
-	for (UIView *subView in self.view.subviews)
-	{
-		if ([subView isKindOfClass:[RecipientViewCell class]] && !subView.hidden)
-		{
-			if ( CGRectContainsPoint(subView.frame, [touch locationInView:self.view]) )
-			{
-				self.selectedRecipientCell.selected = NO;
-				self.selectedRecipientCell = (RecipientViewCell*)subView;
-				self.selectedRecipientCell.selected = YES;
-				cellHit = YES;
-			}
-		}
-	}
-	
-	if (cellHit == NO)
-	{
-		self.selectedRecipientCell.selected = NO;
-		self.selectedRecipientCell = nil;
-        self.entryField.hidden = NO;
-        [self.entryField becomeFirstResponder];
-		//[delegate recipientViewHit];
-	}
     
 }
 
@@ -569,8 +518,6 @@ NSString *blank = @" ";
 			self.contactMatchListView.hidden = YES;
 	}
     
-    [self layoutSubviews];
-    
 }
 
 - (void)hideContactMatchListAnimationDidStop;
@@ -590,7 +537,7 @@ NSString *blank = @" ";
 	textField.text = blank;
     
     [self hideContactMatchListViewAnimated:YES];
-    [textField resignFirstResponder];
+    //[textField resignFirstResponder];
 	
 	return YES;
 }
