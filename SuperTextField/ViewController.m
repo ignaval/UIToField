@@ -11,6 +11,7 @@
 #import "RecipientViewCell.h"
 #import "ArrayDataModel.h"
 #import "ShadowedTableView.h"
+#import "RecipientController.h"
 
 #define kFadeAnimationDuration		0.30
 #define keyboardHeightPortrait      216
@@ -54,10 +55,16 @@ NSString *blankSpace = @" ";
     self.model = nil;
 }
 
+-(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event{
+    [self.entryField resignFirstResponder];
+}
+
 #pragma mark - View lifecycle
 
 - (void)viewDidLoad
 {
+    [super viewDidLoad];
+    
     self.entryField.text = blankSpace;
     
     CGRect frameRect = self.view.frame;
@@ -86,8 +93,9 @@ NSString *blankSpace = @" ";
     self.contactMatchListView.delegate = self;
     self.contactMatchListView.dataSource = self;
     
-    [super viewDidLoad];
-	// Do any additional setup after loading the view, typically from a nib.
+    RecipientController * controller = [[RecipientController alloc] init];
+    [self.view addSubview:controller.view];
+    [controller viewDidLoad];
 }
 
 - (void)viewDidUnload
@@ -258,7 +266,7 @@ NSString *blankSpace = @" ";
 	textField.text = blankSpace;
     
     [self hideContactMatchListViewAnimated:YES];
-    [textField resignFirstResponder];
+    //[textField resignFirstResponder];
 	
 	return YES;
 }
@@ -300,11 +308,11 @@ NSString *blankSpace = @" ";
 			if (self.recipientControl.selectedRecipientCell)
 			{
 				[self deleteSelectedRecipient];
-				//[self toggleEntryFieldVisibility];
+				[self toggleEntryFieldVisibility];
 			}
 			else
 			{
-				//[self toggleEntryFieldVisibility];
+				[self toggleEntryFieldVisibility];
 				[self selectLastRecipientAdded];
 			}
 			return NO;

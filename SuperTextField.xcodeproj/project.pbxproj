@@ -18,6 +18,8 @@
 		FC017EFC147D86CF001B731A /* RecipientControl.m in Sources */ = {isa = PBXBuildFile; fileRef = FC017EF7147D86CF001B731A /* RecipientControl.m */; };
 		FC017EFD147D86CF001B731A /* RecipientViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FC017EF9147D86CF001B731A /* RecipientViewCell.m */; };
 		FC017EFE147D86CF001B731A /* Recipient.m in Sources */ = {isa = PBXBuildFile; fileRef = FC017EFB147D86CF001B731A /* Recipient.m */; };
+		FC0BF0121486ED1C00A5B81B /* RecipientController.m in Sources */ = {isa = PBXBuildFile; fileRef = FC0BF0101486ED1C00A5B81B /* RecipientController.m */; };
+		FC0BF0131486ED1C00A5B81B /* RecipientController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FC0BF0111486ED1C00A5B81B /* RecipientController.xib */; };
 		FCB8B3B5147ECA7900ABED9A /* ArrayDataModel.m in Sources */ = {isa = PBXBuildFile; fileRef = FCB8B3B4147ECA7900ABED9A /* ArrayDataModel.m */; };
 		FCF2E5B8147F385100A5EAA1 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FCF2E5B5147F383F00A5EAA1 /* QuartzCore.framework */; };
 		FCF2E5BF147F687000A5EAA1 /* ShadowedTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = FCF2E5BE147F687000A5EAA1 /* ShadowedTableView.m */; };
@@ -44,6 +46,9 @@
 		FC017EF9147D86CF001B731A /* RecipientViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RecipientViewCell.m; sourceTree = "<group>"; };
 		FC017EFA147D86CF001B731A /* Recipient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Recipient.h; sourceTree = "<group>"; };
 		FC017EFB147D86CF001B731A /* Recipient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Recipient.m; sourceTree = "<group>"; };
+		FC0BF00F1486ED1C00A5B81B /* RecipientController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecipientController.h; sourceTree = "<group>"; };
+		FC0BF0101486ED1C00A5B81B /* RecipientController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RecipientController.m; sourceTree = "<group>"; };
+		FC0BF0111486ED1C00A5B81B /* RecipientController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RecipientController.xib; sourceTree = "<group>"; };
 		FCB8B3B3147ECA7900ABED9A /* ArrayDataModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ArrayDataModel.h; sourceTree = "<group>"; };
 		FCB8B3B4147ECA7900ABED9A /* ArrayDataModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ArrayDataModel.m; sourceTree = "<group>"; };
 		FCF2E5B5147F383F00A5EAA1 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
@@ -108,12 +113,15 @@
 				FC017EF9147D86CF001B731A /* RecipientViewCell.m */,
 				FC017EFA147D86CF001B731A /* Recipient.h */,
 				FC017EFB147D86CF001B731A /* Recipient.m */,
-				FC017EEE147D646B001B731A /* ViewController.xib */,
 				FCF2E5BD147F687000A5EAA1 /* ShadowedTableView.h */,
 				FCF2E5BE147F687000A5EAA1 /* ShadowedTableView.m */,
-				FC017EE0147D646B001B731A /* Supporting Files */,
 				FCB8B3B3147ECA7900ABED9A /* ArrayDataModel.h */,
 				FCB8B3B4147ECA7900ABED9A /* ArrayDataModel.m */,
+				FC0BF00F1486ED1C00A5B81B /* RecipientController.h */,
+				FC0BF0101486ED1C00A5B81B /* RecipientController.m */,
+				FC017EEE147D646B001B731A /* ViewController.xib */,
+				FC0BF0111486ED1C00A5B81B /* RecipientController.xib */,
+				FC017EE0147D646B001B731A /* Supporting Files */,
 			);
 			path = SuperTextField;
 			sourceTree = "<group>";
@@ -183,6 +191,7 @@
 				FC017EE4147D646B001B731A /* InfoPlist.strings in Resources */,
 				FC017EF0147D646B001B731A /* ViewController.xib in Resources */,
 				FCF5AF3214804C9100D03D86 /* contact-pill.png in Resources */,
+				FC0BF0131486ED1C00A5B81B /* RecipientController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -201,6 +210,7 @@
 				FC017EFE147D86CF001B731A /* Recipient.m in Sources */,
 				FCB8B3B5147ECA7900ABED9A /* ArrayDataModel.m in Sources */,
 				FCF2E5BF147F687000A5EAA1 /* ShadowedTableView.m in Sources */,
+				FC0BF0121486ED1C00A5B81B /* RecipientController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
