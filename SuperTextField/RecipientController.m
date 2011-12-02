@@ -203,8 +203,8 @@ NSString *blank = @" ";
 			{
 				// it doesn't fit on the current line with the add contact button, let check to see
 				// if it can with if we move the add button
-				//if (cellLayoutPoint.x + subViewRect.size.width + 4 < self.frame.size.width - 4)
-                if (rightInset - (cellLayoutPoint.x + subViewRect.size.width) > 50)
+				if (cellLayoutPoint.x + subViewRect.size.width + 8 < self.view.frame.size.width - 50)
+                //if (rightInset - (cellLayoutPoint.x + subViewRect.size.width) > 7)
 				{
 					// it fits in the view so just place it at the layoutPoint
 					subViewRect.origin = cellLayoutPoint;
@@ -214,19 +214,28 @@ NSString *blank = @" ";
 				}
 				else
 				{
-					// now we need to see if it will fit on a line all by itself
-					if (subViewRect.size.width + 4 < self.view.frame.size.width)
+                    if (layoutViewCount == 1) 
+                    {
+                        NSLog(@"first line shrink");
+                        subViewRect.origin = cellLayoutPoint;
+                        subViewRect.origin.y += kOriginShift;
+                        subViewRect.size.width = self.view.frame.size.width - cellLayoutPoint.x - 8;
+                        subView.frame = subViewRect;
+                        cellLayoutPoint.x += subViewRect.size.width + 4;
+                    }else if (subViewRect.size.width + 4 < self.view.frame.size.width)
 					{
+                        // now we need to see if it will fit on a line all by itself
                         NSLog(@"adding line B");
 						// it fits
-						cellLayoutPoint.x = kLeftInset;
+                        cellLayoutPoint.x = kLeftInset;
 						cellLayoutPoint.y += growHeight;
 						neededRows ++;
-						
+                        
 						subViewRect.origin = cellLayoutPoint;
 						subViewRect.origin.y += kOriginShift;
 						subView.frame = subViewRect;	
 						cellLayoutPoint.x += subView.frame.size.width + 4;
+                        
 					}
 					else
 					{
@@ -234,31 +243,18 @@ NSString *blank = @" ";
 						
 						// if this is the very first view being layedout then
 						// we'll keep it on the first line and just shrink it.
-						if (layoutViewCount == 1) 
-						{
-							subViewRect.origin = cellLayoutPoint;
-							subViewRect.origin.y += kOriginShift;
-							subViewRect.size.width = rightInset - cellLayoutPoint.x - 50;
-							subView.frame = subViewRect;
-							NSLog(@"adding line C");
-							cellLayoutPoint.x = kLeftInset;
-							cellLayoutPoint.y += growHeight;
-							neededRows ++;
-						}
-						else
-						{
-                            NSLog(@"adding line D");
-							cellLayoutPoint.x = kLeftInset;
-							cellLayoutPoint.y += growHeight;
-							neededRows ++;
-							
-							subViewRect.origin = cellLayoutPoint;
-							subViewRect.origin.y += kOriginShift;
-							subViewRect.size.width = self.view.frame.size.width - cellLayoutPoint.x - 4;
-							subView.frame = subViewRect;
-							cellLayoutPoint.x += subViewRect.size.width + 4;
-							
-						}
+						
+                        NSLog(@"adding line D");
+                        cellLayoutPoint.x = kLeftInset;
+                        cellLayoutPoint.y += growHeight;
+                        neededRows ++;
+                        
+                        subViewRect.origin = cellLayoutPoint;
+                        subViewRect.origin.y += kOriginShift;
+                        subViewRect.size.width = self.view.frame.size.width - cellLayoutPoint.x - 8;
+                        subView.frame = subViewRect;
+                        cellLayoutPoint.x += subViewRect.size.width + 4;
+                        
 					}
 				}
 			}
