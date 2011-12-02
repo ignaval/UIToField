@@ -90,6 +90,7 @@ NSString *blank = @" ";
                     self.selectedRecipientCell = (RecipientViewCell*)subView;
                     self.selectedRecipientCell.selected = YES;
                     cellHit = YES;
+                    break;
                 }
             }
         }
@@ -100,7 +101,6 @@ NSString *blank = @" ";
             self.selectedRecipientCell = nil;
             self.entryField.hidden = NO;
             [self.entryField becomeFirstResponder];
-            //[delegate recipientViewHit];
         }
     } 
 }
@@ -300,6 +300,9 @@ NSString *blank = @" ";
 	{
         NSLog(@"new: %f max: %d",newHeight,maxHeight);
         if (newHeight > maxHeight) {
+            frameRect.size.height = maxHeight;
+            self.view.frame = frameRect;
+            
             //scroll down
             view.contentSize = CGSizeMake(frameRect.size.width, newHeight);
             [view scrollRectToVisible:CGRectMake(0, view.contentSize.height - self.defaultHeight, view.contentSize.width, self.defaultHeight) animated:YES];
@@ -307,11 +310,10 @@ NSString *blank = @" ";
 //            NSLog(@"y: %f, w: %f h: %f",view.contentSize.height - self.defaultHeight,view.contentSize.width,self.defaultHeight);
         }else{
             frameRect.size.height = self.defaultHeight + ((neededRows-1) * growHeight);
+            self.view.frame = frameRect;
             view.contentSize = frameRect.size;
             
         }
-        
-        self.view.frame = frameRect;
         
         CGRect buttonFrame = self.addFromAddressBookButton.frame;
         buttonFrame.origin = CGPointMake(rightInset + 4, view.contentSize.height - self.defaultHeight + kOriginShift);
@@ -386,8 +388,11 @@ NSString *blank = @" ";
 
 - (void)setSelectedRecipientCell:(RecipientViewCell *)cell;
 {
+    UIScrollView * view = (UIScrollView *)self.view;
+    view.scrollEnabled = NO;
+    
 	if (selectedRecipientCell != cell)
-	{
+	{       
 		[self.selectedRecipientCell setNeedsDisplay];
 		[selectedRecipientCell release];
 		selectedRecipientCell = [cell retain];
@@ -399,6 +404,8 @@ NSString *blank = @" ";
         }
         
     }
+    
+    view.scrollEnabled = YES;
 }
 
 - (void)addNewRecipient:(NSString*)recipient;
@@ -657,5 +664,6 @@ NSString *blank = @" ";
     [self hideContactMatchListViewAnimated:YES];
     //[entryField resignFirstResponder];
 }
+
 
 @end
