@@ -314,10 +314,6 @@ NSString *blank = @" ";
             view.contentSize = frameRect.size;
             
         }
-        
-        CGRect buttonFrame = self.addFromAddressBookButton.frame;
-        buttonFrame.origin = CGPointMake(rightInset + 4, view.contentSize.height - self.defaultHeight + kOriginShift);
-        self.addFromAddressBookButton.frame = buttonFrame;
 
 	}
 	else
@@ -327,10 +323,14 @@ NSString *blank = @" ";
 			frameRect = self.view.frame;
 			frameRect.size.height = self.defaultHeight;
 			self.view.frame = frameRect;
-			//[self setNeedsDisplay];
-			//[delegate recipientViewFrameDidChange];
+            view.contentSize = CGSizeMake(frameRect.size.width, frameRect.size.height);
+			
 		}
 	}
+    
+    CGRect buttonFrame = self.addFromAddressBookButton.frame;
+    buttonFrame.origin = CGPointMake(rightInset + 4, view.contentSize.height - self.defaultHeight + kOriginShift);
+    self.addFromAddressBookButton.frame = buttonFrame;
 	
 }
 
