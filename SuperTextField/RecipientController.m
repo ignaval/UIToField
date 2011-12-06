@@ -53,6 +53,25 @@ NSString *blank = @" ";
     // Release any cached data, images, etc that aren't in use.
 }
 
+-(IBAction)showFullContactList:(id)sender{
+    UITableViewController * tableController = [[UITableViewController alloc] initWithStyle:UITableViewStylePlain];
+    tableController.tableView.tag = 101;
+    tableController.tableView.delegate = self;
+    tableController.tableView.dataSource = self;
+    
+    UINavigationController * nav = [[UINavigationController alloc] initWithRootViewController:tableController];
+    tableController.title = @"All Contacts";
+    
+    UIBarButtonItem * doneButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(dissmissTable)];
+    tableController.navigationItem.leftBarButtonItem = doneButton;
+    [doneButton release];
+    
+    [self presentModalViewController:nav animated:YES];
+    
+    [tableController release];
+    [nav release];
+}
+
 #pragma mark - View lifecycle
 
 - (void)viewDidLoad
@@ -97,10 +116,16 @@ NSString *blank = @" ";
         
         if (cellHit == NO)
         {
-            self.selectedRecipientCell.selected = NO;
-            self.selectedRecipientCell = nil;
-            self.entryField.hidden = NO;
-            [self.entryField becomeFirstResponder];
+            if ( CGRectContainsPoint(self.addFromAddressBookButton.frame, [sender locationInView:self.view]) )
+            {
+                [self showFullContactList:self.addFromAddressBookButton];
+            }else{
+                self.selectedRecipientCell.selected = NO;
+                self.selectedRecipientCell = nil;
+                self.entryField.hidden = NO;
+                [self.entryField becomeFirstResponder];
+            }
+            
         }
     } 
 }
@@ -119,6 +144,7 @@ NSString *blank = @" ";
     
     self.contactMatchListView = [[[ShadowedTableView alloc] initWithFrame:frameRect style:UITableViewStylePlain] autorelease];
     self.contactMatchListView.backgroundColor = [UIColor colorWithWhite:0.91 alpha:1.0];
+    self.contactMatchListView.tag = 100;
     
     CGRect frame = self.contactMatchListView.bounds;
     frame.origin.y = -frame.size.height*2;
@@ -301,7 +327,8 @@ NSString *blank = @" ";
             
             //scroll down
             view.contentSize = CGSizeMake(frameRect.size.width, newHeight);
-            [view scrollRectToVisible:CGRectMake(0, view.contentSize.height - self.defaultHeight, view.contentSize.width, self.defaultHeight) animated:YES];
+            
+            [view scrollRectToVisible:CGRectMake(0, view.contentSize.height - self.defaultHeight, view.contentSize.width, self.defaultHeight) animated:NO];
             
 //            NSLog(@"y: %f, w: %f h: %f",view.contentSize.height - self.defaultHeight,view.contentSize.width,self.defaultHeight);
         }else{
@@ -330,33 +357,42 @@ NSString *blank = @" ";
 	
 }
 
+-(void)dissmissTable{
+    [self dismissModalViewControllerAnimated:YES];
+    [self layoutSubviews];
+}
+
+-(void)setUpNameLabel{
+    self.namesLabel.text = @"";
+    
+    for (UIView *subView in self.view.subviews){
+        if ([subView isKindOfClass:[RecipientViewCell class]]){
+            subView.hidden = YES;
+            self.namesLabel.text = [NSString stringWithFormat:@"%@%@, ",self.namesLabel.text,((RecipientViewCell *)subView).cellDisplayTitle];
+        }
+        
+    }
+    
+    if ([self.namesLabel.text length] > 0) {
+        self.namesLabel.text = [self.namesLabel.text substringToIndex:(self.namesLabel.text.length-2)];
+        self.namesLabel.hidden = NO;
+    }
+    
+    self.selectedRecipientCell.selected = NO;
+    self.selectedRecipientCell = nil;
+    
+    CGRect frameRect = self.view.frame;
+    frameRect.origin.y = 0;
+    self.view.frame = frameRect;
+    
+    [self layoutSubviews];
+}
+
 -(void)keyboardWillHide{
-    NSLog(@"called didHide");
+    NSLog(@"called willHide");
     //show one line name list
     if ([self.entryField isFirstResponder]) {
-        self.namesLabel.text = @"";
-        
-        for (UIView *subView in self.view.subviews){
-            if ([subView isKindOfClass:[RecipientViewCell class]]){
-                subView.hidden = YES;
-                self.namesLabel.text = [NSString stringWithFormat:@"%@%@, ",self.namesLabel.text,((RecipientViewCell *)subView).cellDisplayTitle];
-            }
-            
-        }
-        
-        if ([self.namesLabel.text length] > 0) {
-            self.namesLabel.text = [self.namesLabel.text substringToIndex:(self.namesLabel.text.length-2)];
-            self.namesLabel.hidden = NO;
-        }
-        
-        self.selectedRecipientCell.selected = NO;
-		self.selectedRecipientCell = nil;
-        
-        CGRect frameRect = self.view.frame;
-        frameRect.origin.y = 0;
-        self.view.frame = frameRect;
-        
-        [self layoutSubviews];
+        [self setUpNameLabel];
     }
 }
 
@@ -385,7 +421,7 @@ NSString *blank = @" ";
 - (void)setSelectedRecipientCell:(RecipientViewCell *)cell;
 {
     UIScrollView * view = (UIScrollView *)self.view;
-    view.scrollEnabled = NO;
+    [view setScrollEnabled:NO];
     
 	if (selectedRecipientCell != cell)
 	{       
@@ -401,7 +437,7 @@ NSString *blank = @" ";
         
     }
     
-    view.scrollEnabled = YES;
+    [view setScrollEnabled:YES];
 }
 
 - (void)addNewRecipient:(NSString*)recipient;
@@ -418,7 +454,12 @@ NSString *blank = @" ";
 	RecipientViewCell *recipientCell = [[[RecipientViewCell alloc] initWithTitle:recipient] autorelease];
     
 	[self.view addSubview:recipientCell];
-	[self layoutSubviews];
+	
+    if (self.entryField.isFirstResponder) {
+        [self layoutSubviews];
+    }else{
+        [self setUpNameLabel];
+    }
 	
 	Recipient *newRecipient = [[[Recipient alloc] init] autorelease];
 	
@@ -534,7 +575,6 @@ NSString *blank = @" ";
 {
 	// the user selected a return so let's add the textFields content to the 
 	// list of recipients.
-	
 	[self addNewRecipient:[textField.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]]];
 	
 	textField.text = blank;
@@ -622,8 +662,15 @@ NSString *blank = @" ";
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section 
 {
 	
-	//return [[MultiRecipientModel sharedMultiRecipientModel] countForSearchMatches];
-    return [model countForSearchMatches];
+	int numOfRows = 0;
+    
+    if (tableView.tag == 101) {
+        numOfRows = [model totalContactsCount];
+    }else{
+        numOfRows = [model countForSearchMatches];
+    }
+    
+    return numOfRows;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath 
@@ -639,9 +686,14 @@ NSString *blank = @" ";
 		returnCell.accessoryType = UITableViewCellAccessoryNone;
 	}
 	
-	//returnCell.textLabel.text = [[MultiRecipientModel sharedMultiRecipientModel] personNameForIndex:indexPath.row];
-    returnCell.textLabel.text = [model personNameForIndex:indexPath.row];
-    returnCell.detailTextLabel.text = [model personAddressForIndex:indexPath.row];
+	if (tableView.tag == 100) {
+        returnCell.textLabel.text = [model personNameForIndexInResults:indexPath.row];
+        returnCell.detailTextLabel.text = [model personAddressForIndexInResults:indexPath.row];
+    }else if(tableView.tag == 101){
+        returnCell.textLabel.text = [model personNameForIndex:indexPath.row];
+        returnCell.detailTextLabel.text = [model personAddressForIndex:indexPath.row];
+    }
+    
     
 	
 	return returnCell;
@@ -657,8 +709,12 @@ NSString *blank = @" ";
     
     entryField.text = blank;
     
-    [self hideContactMatchListViewAnimated:YES];
-    //[entryField resignFirstResponder];
+    if (tableView.tag == 100) {
+        [self hideContactMatchListViewAnimated:YES];
+    }else if(tableView.tag == 101){
+        [self dissmissTable];
+    }
+    
 }
 
 

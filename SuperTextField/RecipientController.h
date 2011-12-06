@@ -23,8 +23,11 @@
 
 - (BOOL)foundMatchesForSearchString:(NSString*)searchString;
 - (NSInteger)countForSearchMatches;
+- (NSInteger)totalContactsCount;
 - (NSString*)personNameForIndex:(NSInteger)index;
 - (NSString*)personAddressForIndex:(NSInteger)index;
+- (NSString*)personNameForIndexInResults:(NSInteger)index;
+- (NSString*)personAddressForIndexInResults:(NSInteger)index;
 
 - (void)addRecipient:(Recipient*)newRecipient;
 - (void)removeRecipient:(Recipient*)recipient;

@@ -32,6 +32,10 @@
     [contacts release];
 }
 
+-(NSInteger)totalContactsCount{
+    return [[contacts allKeys] count];
+}
+
 - (BOOL)foundMatchesForSearchString:(NSString*)searchString{
     
     [self.foundPeople removeAllObjects];
@@ -49,15 +53,27 @@
     return [self.foundPeople count];
 }
 
-- (NSString*)personNameForIndex:(NSInteger)index{
+- (NSString*)personNameForIndexInResults:(NSInteger)index{
     
     return [self.foundPeople objectAtIndex:index];
     
 }
 
-- (NSString*)personAddressForIndex:(NSInteger)index{
+- (NSString*)personAddressForIndexInResults:(NSInteger)index{
     
     return [contacts valueForKey:[self.foundPeople objectAtIndex:index]];
+    
+}
+
+- (NSString*)personNameForIndex:(NSInteger)index{
+    
+    return [[contacts allKeys] objectAtIndex:index];
+    
+}
+
+- (NSString*)personAddressForIndex:(NSInteger)index{
+    
+    return [contacts valueForKey:[[contacts allKeys] objectAtIndex:index]];
     
 }
 

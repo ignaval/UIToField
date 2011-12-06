@@ -98,13 +98,13 @@
 			<nil key="activeLocalization"/>
 			<dictionary class="NSMutableDictionary" key="localizations"/>
 			<nil key="sourceID"/>
-			<int key="maxID">29</int>
+			<int key="maxID">31</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<array class="NSMutableArray" key="referencedPartialClassDescriptions">
 				<object class="IBPartialClassDescription">
-					<string key="className">RecipientControl</string>
-					<string key="superclassName">UIControl</string>
+					<string key="className">RecipientController</string>
+					<string key="superclassName">UIViewController</string>
 					<dictionary class="NSMutableDictionary" key="outlets">
 						<string key="addFromAddressBookButton">UIButton</string>
 						<string key="delegate">id</string>
@@ -136,31 +136,23 @@
 					</dictionary>
 					<object class="IBClassDescriptionSource" key="sourceIdentifier">
 						<string key="majorKey">IBProjectSource</string>
-						<string key="minorKey">./Classes/RecipientControl.h</string>
+						<string key="minorKey">./Classes/RecipientController.h</string>
 					</object>
 				</object>
 				<object class="IBPartialClassDescription">
 					<string key="className">ViewController</string>
 					<string key="superclassName">UIViewController</string>
-					<dictionary class="NSMutableDictionary" key="outlets">
-						<string key="addFromAddressBookButton">UIButton</string>
-						<string key="entryField">UITextField</string>
-						<string key="recipientControl">RecipientControl</string>
-					</dictionary>
-					<dictionary class="NSMutableDictionary" key="toOneOutletInfosByName">
-						<object class="IBToOneOutletInfo" key="addFromAddressBookButton">
-							<string key="name">addFromAddressBookButton</string>
-							<string key="candidateClassName">UIButton</string>
+					<object class="NSMutableDictionary" key="outlets">
+						<string key="NS.key.0">recipientController</string>
+						<string key="NS.object.0">RecipientController</string>
+					</object>
+					<object class="NSMutableDictionary" key="toOneOutletInfosByName">
+						<string key="NS.key.0">recipientController</string>
+						<object class="IBToOneOutletInfo" key="NS.object.0">
+							<string key="name">recipientController</string>
+							<string key="candidateClassName">RecipientController</string>
 						</object>
-						<object class="IBToOneOutletInfo" key="entryField">
-							<string key="name">entryField</string>
-							<string key="candidateClassName">UITextField</string>
-						</object>
-						<object class="IBToOneOutletInfo" key="recipientControl">
-							<string key="name">recipientControl</string>
-							<string key="candidateClassName">RecipientControl</string>
-						</object>
-					</dictionary>
+					</object>
 					<object class="IBClassDescriptionSource" key="sourceIdentifier">
 						<string key="majorKey">IBProjectSource</string>
 						<string key="minorKey">./Classes/ViewController.h</string>
