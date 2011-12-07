@@ -20,6 +20,11 @@
 #define keyboardHeightPortrait      216
 #define keyboardHeightLandscape     162
 
+#define matchListTableTag 100
+#define fullListTableTag 101
+
+#define navigationControllerTag 200
+
 NSString *blank = @" ";
 
 @implementation RecipientController
@@ -28,7 +33,6 @@ NSString *blank = @" ";
 @synthesize entryField;
 @synthesize toLabel;
 @synthesize namesLabel;
-@synthesize delegate;
 @dynamic selectedRecipientCell;
 @synthesize defaultHeight;
 @synthesize model;
@@ -54,19 +58,32 @@ NSString *blank = @" ";
 }
 
 -(IBAction)showFullContactList:(id)sender{
+    [self.entryField resignFirstResponder];
+    
     UITableViewController * tableController = [[UITableViewController alloc] initWithStyle:UITableViewStylePlain];
-    tableController.tableView.tag = 101;
+    tableController.tableView.tag = fullListTableTag;
+    tableController.tableView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
     tableController.tableView.delegate = self;
     tableController.tableView.dataSource = self;
     
     UINavigationController * nav = [[UINavigationController alloc] initWithRootViewController:tableController];
+    nav.view.tag = navigationControllerTag;
     tableController.title = @"All Contacts";
     
     UIBarButtonItem * doneButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(dissmissTable)];
-    tableController.navigationItem.leftBarButtonItem = doneButton;
+    tableController.navigationItem.rightBarButtonItem = doneButton;
     [doneButton release];
     
-    [self presentModalViewController:nav animated:YES];
+    CGRect onScreenFrame = CGRectMake(0, 0, self.view.superview.bounds.size.width, self.view.superview.bounds.size.height);
+    CGRect offScreenFrame = onScreenFrame;
+    offScreenFrame.origin.y = self.view.superview.bounds.size.height;
+    
+    nav.view.frame = offScreenFrame;
+    [UIView beginAnimations:@"FakeModalTransition" context:nil];
+    [UIView setAnimationDuration:0.5f];
+    [self.view.superview addSubview:nav.view];
+    nav.view.frame = onScreenFrame;
+    [UIView commitAnimations];
     
     [tableController release];
     [nav release];
@@ -88,6 +105,9 @@ NSString *blank = @" ";
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillHide) name:UIKeyboardWillHideNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillShow) name:UIKeyboardWillShowNotification object:nil];
+    
+//    [[UIDevice currentDevice] beginGeneratingDeviceOrientationNotifications];
+//    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(deviceRotated) name:@"UIDeviceOrientationDidChangeNotification" object:nil];
 }
 
 - (void)handleTap:(UITapGestureRecognizer *)sender {
@@ -130,6 +150,12 @@ NSString *blank = @" ";
     } 
 }
 
+-(void)setUpControllerView{
+    CGRect frameRect = self.view.superview.bounds;
+    
+    self.view.frame = CGRectMake(0, 0, frameRect.size.width, self.defaultHeight);
+}
+
 -(void)setUpContactMatchView{
     CGRect frameRect = self.view.superview.bounds;
     frameRect.origin.y = self.view.frame.size.height - self.view.frame.origin.y;
@@ -144,7 +170,7 @@ NSString *blank = @" ";
     
     self.contactMatchListView = [[[ShadowedTableView alloc] initWithFrame:frameRect style:UITableViewStylePlain] autorelease];
     self.contactMatchListView.backgroundColor = [UIColor colorWithWhite:0.91 alpha:1.0];
-    self.contactMatchListView.tag = 100;
+    self.contactMatchListView.tag = matchListTableTag;
     
     CGRect frame = self.contactMatchListView.bounds;
     frame.origin.y = -frame.size.height*2;
@@ -156,6 +182,7 @@ NSString *blank = @" ";
     
     [self.view.superview addSubview:self.contactMatchListView];
     self.contactMatchListView.hidden = YES;
+    self.contactMatchListView.autoresizingMask = UIViewAutoresizingFlexibleWidth;
     self.contactMatchListView.delegate = self;
     self.contactMatchListView.dataSource = self;
 }
@@ -165,12 +192,6 @@ NSString *blank = @" ";
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
-}
-
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
-{
-    // Return YES for supported orientations
-    return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
 
 - (void)dealloc 
@@ -357,9 +378,28 @@ NSString *blank = @" ";
 	
 }
 
--(void)dissmissTable{
-    [self dismissModalViewControllerAnimated:YES];
+-(void)finishedAnimation{
+    NSLog(@"called finishedAnimation");
+    [[self.view.superview viewWithTag:navigationControllerTag] removeFromSuperview];
+    
     [self layoutSubviews];
+}
+
+-(void)dissmissTable{
+    UIView * navView = [self.view.superview viewWithTag:navigationControllerTag];
+    
+    CGRect onScreenFrame = CGRectMake(0, 0, self.view.superview.bounds.size.width, self.view.superview.bounds.size.height);
+    CGRect offScreenFrame = onScreenFrame;
+    offScreenFrame.origin.y = self.view.superview.bounds.size.height;
+
+    [UIView beginAnimations:@"FakeModalTransition" context:nil];
+    [UIView setAnimationDelegate:self];
+    [UIView setAnimationDidStopSelector:@selector(finishedAnimation)];
+    [UIView setAnimationDuration:0.5f];
+    navView.frame = offScreenFrame;
+    
+    [UIView commitAnimations];
+    
 }
 
 -(void)setUpNameLabel{
@@ -664,9 +704,9 @@ NSString *blank = @" ";
 	
 	int numOfRows = 0;
     
-    if (tableView.tag == 101) {
+    if (tableView.tag == fullListTableTag) {
         numOfRows = [model totalContactsCount];
-    }else{
+    }else if (tableView.tag == matchListTableTag){
         numOfRows = [model countForSearchMatches];
     }
     
@@ -686,10 +726,10 @@ NSString *blank = @" ";
 		returnCell.accessoryType = UITableViewCellAccessoryNone;
 	}
 	
-	if (tableView.tag == 100) {
+	if (tableView.tag == matchListTableTag) {
         returnCell.textLabel.text = [model personNameForIndexInResults:indexPath.row];
         returnCell.detailTextLabel.text = [model personAddressForIndexInResults:indexPath.row];
-    }else if(tableView.tag == 101){
+    }else if(tableView.tag == fullListTableTag){
         returnCell.textLabel.text = [model personNameForIndex:indexPath.row];
         returnCell.detailTextLabel.text = [model personAddressForIndex:indexPath.row];
     }
@@ -709,13 +749,34 @@ NSString *blank = @" ";
     
     entryField.text = blank;
     
-    if (tableView.tag == 100) {
+    if (tableView.tag == matchListTableTag) {
         [self hideContactMatchListViewAnimated:YES];
-    }else if(tableView.tag == 101){
+    }else if(tableView.tag == fullListTableTag){
         [self dissmissTable];
     }
     
 }
+
+#pragma mark Rotation Methods
+
+-(BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation{
+    NSLog(@"asdasdasdasdasd");
+    return YES;
+}
+
+//-(void)deviceRotated{
+//    NSLog(@"rotation to %d",[[UIDevice currentDevice] orientation]);
+//    
+//    UIDeviceOrientation orientation = [[UIDevice currentDevice] orientation];
+//    
+//    NSLog(@"rotation to %d",self.interfaceOrientation);
+//    //NSLog(@"rotation to %d",self.delegate.interfaceOrientation);
+//    
+//    if (orientation != UIDeviceOrientationPortraitUpsideDown) {
+//        //[self setUpControllerView];
+//        //[self setUpContactMatchView];
+//    }
+//}
 
 
 @end
