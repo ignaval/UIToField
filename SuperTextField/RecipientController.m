@@ -80,7 +80,7 @@ NSString *blank = @" ";
     
     nav.view.frame = offScreenFrame;
     [UIView beginAnimations:@"FakeModalTransition" context:nil];
-    [UIView setAnimationDuration:0.5f];
+    [UIView setAnimationDuration:0.4f];
     [self.view.superview addSubview:nav.view];
     nav.view.frame = onScreenFrame;
     [UIView commitAnimations];
@@ -379,7 +379,6 @@ NSString *blank = @" ";
 }
 
 -(void)finishedAnimation{
-    NSLog(@"called finishedAnimation");
     [[self.view.superview viewWithTag:navigationControllerTag] removeFromSuperview];
     
     [self layoutSubviews];
@@ -395,7 +394,7 @@ NSString *blank = @" ";
     [UIView beginAnimations:@"FakeModalTransition" context:nil];
     [UIView setAnimationDelegate:self];
     [UIView setAnimationDidStopSelector:@selector(finishedAnimation)];
-    [UIView setAnimationDuration:0.5f];
+    [UIView setAnimationDuration:0.4f];
     navView.frame = offScreenFrame;
     
     [UIView commitAnimations];
@@ -760,7 +759,6 @@ NSString *blank = @" ";
 #pragma mark Rotation Methods
 
 -(BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation{
-    NSLog(@"asdasdasdasdasd");
     return YES;
 }
 
