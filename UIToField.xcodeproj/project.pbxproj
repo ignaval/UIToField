@@ -10,20 +10,21 @@
 		FC017EDA147D646B001B731A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FC017ED9147D646B001B731A /* UIKit.framework */; };
 		FC017EDC147D646B001B731A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FC017EDB147D646B001B731A /* Foundation.framework */; };
 		FC017EDE147D646B001B731A /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FC017EDD147D646B001B731A /* CoreGraphics.framework */; };
-		FC017EE4147D646B001B731A /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = FC017EE2147D646B001B731A /* InfoPlist.strings */; };
-		FC017EE6147D646B001B731A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = FC017EE5147D646B001B731A /* main.m */; };
-		FC017EEA147D646B001B731A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = FC017EE9147D646B001B731A /* AppDelegate.m */; };
-		FC017EED147D646B001B731A /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FC017EEC147D646B001B731A /* ViewController.m */; };
-		FC017EF0147D646B001B731A /* ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FC017EEE147D646B001B731A /* ViewController.xib */; };
-		FC017EFC147D86CF001B731A /* RecipientControl.m in Sources */ = {isa = PBXBuildFile; fileRef = FC017EF7147D86CF001B731A /* RecipientControl.m */; };
-		FC017EFD147D86CF001B731A /* RecipientViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FC017EF9147D86CF001B731A /* RecipientViewCell.m */; };
-		FC017EFE147D86CF001B731A /* Recipient.m in Sources */ = {isa = PBXBuildFile; fileRef = FC017EFB147D86CF001B731A /* Recipient.m */; };
-		FC0BF0121486ED1C00A5B81B /* RecipientController.m in Sources */ = {isa = PBXBuildFile; fileRef = FC0BF0101486ED1C00A5B81B /* RecipientController.m */; };
-		FC0BF0131486ED1C00A5B81B /* RecipientController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FC0BF0111486ED1C00A5B81B /* RecipientController.xib */; };
-		FCB8B3B5147ECA7900ABED9A /* ArrayDataModel.m in Sources */ = {isa = PBXBuildFile; fileRef = FCB8B3B4147ECA7900ABED9A /* ArrayDataModel.m */; };
+		FCD754851496ABC5007FE662 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = FCD7546C1496ABC5007FE662 /* AppDelegate.m */; };
+		FCD754861496ABC5007FE662 /* ArrayDataModel.m in Sources */ = {isa = PBXBuildFile; fileRef = FCD7546E1496ABC5007FE662 /* ArrayDataModel.m */; };
+		FCD754871496ABC5007FE662 /* contact-pill.png in Resources */ = {isa = PBXBuildFile; fileRef = FCD7546F1496ABC5007FE662 /* contact-pill.png */; };
+		FCD7548A1496ABC5007FE662 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = FCD754751496ABC5007FE662 /* main.m */; };
+		FCD7548B1496ABC5007FE662 /* Recipient.m in Sources */ = {isa = PBXBuildFile; fileRef = FCD754771496ABC5007FE662 /* Recipient.m */; };
+		FCD7548C1496ABC5007FE662 /* RecipientControl.m in Sources */ = {isa = PBXBuildFile; fileRef = FCD754791496ABC5007FE662 /* RecipientControl.m */; };
+		FCD7548D1496ABC5007FE662 /* RecipientController.m in Sources */ = {isa = PBXBuildFile; fileRef = FCD7547B1496ABC5007FE662 /* RecipientController.m */; };
+		FCD7548E1496ABC5007FE662 /* RecipientController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FCD7547C1496ABC5007FE662 /* RecipientController.xib */; };
+		FCD7548F1496ABC5007FE662 /* RecipientViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FCD7547E1496ABC5007FE662 /* RecipientViewCell.m */; };
+		FCD754901496ABC5007FE662 /* ShadowedTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = FCD754801496ABC5007FE662 /* ShadowedTableView.m */; };
+		FCD754911496ABC5007FE662 /* UIToField-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = FCD754811496ABC5007FE662 /* UIToField-Info.plist */; };
+		FCD754921496ABC5007FE662 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FCD754841496ABC5007FE662 /* ViewController.m */; };
+		FCD754951496AC42007FE662 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = FCD754931496AC42007FE662 /* InfoPlist.strings */; };
+		FCD754981496AC72007FE662 /* ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FCD754961496AC72007FE662 /* ViewController.xib */; };
 		FCF2E5B8147F385100A5EAA1 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FCF2E5B5147F383F00A5EAA1 /* QuartzCore.framework */; };
-		FCF2E5BF147F687000A5EAA1 /* ShadowedTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = FCF2E5BE147F687000A5EAA1 /* ShadowedTableView.m */; };
-		FCF5AF3214804C9100D03D86 /* contact-pill.png in Resources */ = {isa = PBXBuildFile; fileRef = FCF5AF3114804C9100D03D86 /* contact-pill.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -31,30 +32,30 @@
 		FC017ED9147D646B001B731A /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		FC017EDB147D646B001B731A /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		FC017EDD147D646B001B731A /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
-		FC017EE1147D646B001B731A /* UIToField-Info.plist */ = {isa = PBXFileReference; path = "UIToField-Info.plist"; sourceTree = "<group>"; };
-		FC017EE3147D646B001B731A /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		FC017EE5147D646B001B731A /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		FC017EE7147D646B001B731A /* UIToField-Prefix.pch */ = {isa = PBXFileReference; path = "UIToField-Prefix.pch"; sourceTree = "<group>"; };
-		FC017EE8147D646B001B731A /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
-		FC017EE9147D646B001B731A /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		FC017EEB147D646B001B731A /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		FC017EEC147D646B001B731A /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
-		FC017EEF147D646B001B731A /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/ViewController.xib; sourceTree = "<group>"; };
-		FC017EF6147D86CF001B731A /* RecipientControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecipientControl.h; sourceTree = "<group>"; };
-		FC017EF7147D86CF001B731A /* RecipientControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RecipientControl.m; sourceTree = "<group>"; };
-		FC017EF8147D86CF001B731A /* RecipientViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecipientViewCell.h; sourceTree = "<group>"; };
-		FC017EF9147D86CF001B731A /* RecipientViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RecipientViewCell.m; sourceTree = "<group>"; };
-		FC017EFA147D86CF001B731A /* Recipient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Recipient.h; sourceTree = "<group>"; };
-		FC017EFB147D86CF001B731A /* Recipient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Recipient.m; sourceTree = "<group>"; };
-		FC0BF00F1486ED1C00A5B81B /* RecipientController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecipientController.h; sourceTree = "<group>"; };
-		FC0BF0101486ED1C00A5B81B /* RecipientController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RecipientController.m; sourceTree = "<group>"; };
-		FC0BF0111486ED1C00A5B81B /* RecipientController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RecipientController.xib; sourceTree = "<group>"; };
-		FCB8B3B3147ECA7900ABED9A /* ArrayDataModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ArrayDataModel.h; sourceTree = "<group>"; };
-		FCB8B3B4147ECA7900ABED9A /* ArrayDataModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ArrayDataModel.m; sourceTree = "<group>"; };
+		FCD7546B1496ABC5007FE662 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = UIToField/AppDelegate.h; sourceTree = SOURCE_ROOT; };
+		FCD7546C1496ABC5007FE662 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AppDelegate.m; path = UIToField/AppDelegate.m; sourceTree = SOURCE_ROOT; };
+		FCD7546D1496ABC5007FE662 /* ArrayDataModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ArrayDataModel.h; path = UIToField/ArrayDataModel.h; sourceTree = SOURCE_ROOT; };
+		FCD7546E1496ABC5007FE662 /* ArrayDataModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ArrayDataModel.m; path = UIToField/ArrayDataModel.m; sourceTree = SOURCE_ROOT; };
+		FCD7546F1496ABC5007FE662 /* contact-pill.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "contact-pill.png"; path = "UIToField/contact-pill.png"; sourceTree = SOURCE_ROOT; };
+		FCD754751496ABC5007FE662 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = UIToField/main.m; sourceTree = SOURCE_ROOT; };
+		FCD754761496ABC5007FE662 /* Recipient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Recipient.h; path = UIToField/Recipient.h; sourceTree = SOURCE_ROOT; };
+		FCD754771496ABC5007FE662 /* Recipient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Recipient.m; path = UIToField/Recipient.m; sourceTree = SOURCE_ROOT; };
+		FCD754781496ABC5007FE662 /* RecipientControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RecipientControl.h; path = UIToField/RecipientControl.h; sourceTree = SOURCE_ROOT; };
+		FCD754791496ABC5007FE662 /* RecipientControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RecipientControl.m; path = UIToField/RecipientControl.m; sourceTree = SOURCE_ROOT; };
+		FCD7547A1496ABC5007FE662 /* RecipientController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RecipientController.h; path = UIToField/RecipientController.h; sourceTree = SOURCE_ROOT; };
+		FCD7547B1496ABC5007FE662 /* RecipientController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RecipientController.m; path = UIToField/RecipientController.m; sourceTree = SOURCE_ROOT; };
+		FCD7547C1496ABC5007FE662 /* RecipientController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = RecipientController.xib; path = UIToField/RecipientController.xib; sourceTree = SOURCE_ROOT; };
+		FCD7547D1496ABC5007FE662 /* RecipientViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RecipientViewCell.h; path = UIToField/RecipientViewCell.h; sourceTree = SOURCE_ROOT; };
+		FCD7547E1496ABC5007FE662 /* RecipientViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RecipientViewCell.m; path = UIToField/RecipientViewCell.m; sourceTree = SOURCE_ROOT; };
+		FCD7547F1496ABC5007FE662 /* ShadowedTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ShadowedTableView.h; path = UIToField/ShadowedTableView.h; sourceTree = SOURCE_ROOT; };
+		FCD754801496ABC5007FE662 /* ShadowedTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ShadowedTableView.m; path = UIToField/ShadowedTableView.m; sourceTree = SOURCE_ROOT; };
+		FCD754811496ABC5007FE662 /* UIToField-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "UIToField-Info.plist"; path = "UIToField/UIToField-Info.plist"; sourceTree = SOURCE_ROOT; };
+		FCD754821496ABC5007FE662 /* UIToField-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIToField-Prefix.pch"; path = "UIToField/UIToField-Prefix.pch"; sourceTree = SOURCE_ROOT; };
+		FCD754831496ABC5007FE662 /* ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ViewController.h; path = UIToField/ViewController.h; sourceTree = SOURCE_ROOT; };
+		FCD754841496ABC5007FE662 /* ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ViewController.m; path = UIToField/ViewController.m; sourceTree = SOURCE_ROOT; };
+		FCD754941496AC42007FE662 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = UIToField/en.lproj/InfoPlist.strings; sourceTree = SOURCE_ROOT; };
+		FCD754971496AC72007FE662 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = UIToField/en.lproj/ViewController.xib; sourceTree = SOURCE_ROOT; };
 		FCF2E5B5147F383F00A5EAA1 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
-		FCF2E5BD147F687000A5EAA1 /* ShadowedTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShadowedTableView.h; sourceTree = "<group>"; };
-		FCF2E5BE147F687000A5EAA1 /* ShadowedTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShadowedTableView.m; sourceTree = "<group>"; };
-		FCF5AF3114804C9100D03D86 /* contact-pill.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "contact-pill.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,24 +104,24 @@
 		FC017EDF147D646B001B731A /* UIToField */ = {
 			isa = PBXGroup;
 			children = (
-				FC017EE8147D646B001B731A /* AppDelegate.h */,
-				FC017EE9147D646B001B731A /* AppDelegate.m */,
-				FC017EEB147D646B001B731A /* ViewController.h */,
-				FC017EEC147D646B001B731A /* ViewController.m */,
-				FC017EF6147D86CF001B731A /* RecipientControl.h */,
-				FC017EF7147D86CF001B731A /* RecipientControl.m */,
-				FC017EF8147D86CF001B731A /* RecipientViewCell.h */,
-				FC017EF9147D86CF001B731A /* RecipientViewCell.m */,
-				FC017EFA147D86CF001B731A /* Recipient.h */,
-				FC017EFB147D86CF001B731A /* Recipient.m */,
-				FCF2E5BD147F687000A5EAA1 /* ShadowedTableView.h */,
-				FCF2E5BE147F687000A5EAA1 /* ShadowedTableView.m */,
-				FCB8B3B3147ECA7900ABED9A /* ArrayDataModel.h */,
-				FCB8B3B4147ECA7900ABED9A /* ArrayDataModel.m */,
-				FC0BF00F1486ED1C00A5B81B /* RecipientController.h */,
-				FC0BF0101486ED1C00A5B81B /* RecipientController.m */,
-				FC017EEE147D646B001B731A /* ViewController.xib */,
-				FC0BF0111486ED1C00A5B81B /* RecipientController.xib */,
+				FCD7546B1496ABC5007FE662 /* AppDelegate.h */,
+				FCD7546C1496ABC5007FE662 /* AppDelegate.m */,
+				FCD7546D1496ABC5007FE662 /* ArrayDataModel.h */,
+				FCD7546E1496ABC5007FE662 /* ArrayDataModel.m */,
+				FCD754761496ABC5007FE662 /* Recipient.h */,
+				FCD754771496ABC5007FE662 /* Recipient.m */,
+				FCD754781496ABC5007FE662 /* RecipientControl.h */,
+				FCD754791496ABC5007FE662 /* RecipientControl.m */,
+				FCD7547A1496ABC5007FE662 /* RecipientController.h */,
+				FCD7547B1496ABC5007FE662 /* RecipientController.m */,
+				FCD7547D1496ABC5007FE662 /* RecipientViewCell.h */,
+				FCD7547E1496ABC5007FE662 /* RecipientViewCell.m */,
+				FCD7547F1496ABC5007FE662 /* ShadowedTableView.h */,
+				FCD754801496ABC5007FE662 /* ShadowedTableView.m */,
+				FCD754831496ABC5007FE662 /* ViewController.h */,
+				FCD754841496ABC5007FE662 /* ViewController.m */,
+				FCD754961496AC72007FE662 /* ViewController.xib */,
+				FCD7547C1496ABC5007FE662 /* RecipientController.xib */,
 				FC017EE0147D646B001B731A /* Supporting Files */,
 			);
 			name = UIToField;
@@ -130,11 +131,11 @@
 		FC017EE0147D646B001B731A /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				FCF5AF3114804C9100D03D86 /* contact-pill.png */,
-				FC017EE1147D646B001B731A /* UIToField-Info.plist */,
-				FC017EE2147D646B001B731A /* InfoPlist.strings */,
-				FC017EE5147D646B001B731A /* main.m */,
-				FC017EE7147D646B001B731A /* UIToField-Prefix.pch */,
+				FCD754931496AC42007FE662 /* InfoPlist.strings */,
+				FCD7546F1496ABC5007FE662 /* contact-pill.png */,
+				FCD754751496ABC5007FE662 /* main.m */,
+				FCD754811496ABC5007FE662 /* UIToField-Info.plist */,
+				FCD754821496ABC5007FE662 /* UIToField-Prefix.pch */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -189,10 +190,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FC017EE4147D646B001B731A /* InfoPlist.strings in Resources */,
-				FC017EF0147D646B001B731A /* ViewController.xib in Resources */,
-				FCF5AF3214804C9100D03D86 /* contact-pill.png in Resources */,
-				FC0BF0131486ED1C00A5B81B /* RecipientController.xib in Resources */,
+				FCD754871496ABC5007FE662 /* contact-pill.png in Resources */,
+				FCD7548E1496ABC5007FE662 /* RecipientController.xib in Resources */,
+				FCD754911496ABC5007FE662 /* UIToField-Info.plist in Resources */,
+				FCD754951496AC42007FE662 /* InfoPlist.strings in Resources */,
+				FCD754981496AC72007FE662 /* ViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -203,33 +205,33 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FC017EE6147D646B001B731A /* main.m in Sources */,
-				FC017EEA147D646B001B731A /* AppDelegate.m in Sources */,
-				FC017EED147D646B001B731A /* ViewController.m in Sources */,
-				FC017EFC147D86CF001B731A /* RecipientControl.m in Sources */,
-				FC017EFD147D86CF001B731A /* RecipientViewCell.m in Sources */,
-				FC017EFE147D86CF001B731A /* Recipient.m in Sources */,
-				FCB8B3B5147ECA7900ABED9A /* ArrayDataModel.m in Sources */,
-				FCF2E5BF147F687000A5EAA1 /* ShadowedTableView.m in Sources */,
-				FC0BF0121486ED1C00A5B81B /* RecipientController.m in Sources */,
+				FCD754851496ABC5007FE662 /* AppDelegate.m in Sources */,
+				FCD754861496ABC5007FE662 /* ArrayDataModel.m in Sources */,
+				FCD7548A1496ABC5007FE662 /* main.m in Sources */,
+				FCD7548B1496ABC5007FE662 /* Recipient.m in Sources */,
+				FCD7548C1496ABC5007FE662 /* RecipientControl.m in Sources */,
+				FCD7548D1496ABC5007FE662 /* RecipientController.m in Sources */,
+				FCD7548F1496ABC5007FE662 /* RecipientViewCell.m in Sources */,
+				FCD754901496ABC5007FE662 /* ShadowedTableView.m in Sources */,
+				FCD754921496ABC5007FE662 /* ViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		FC017EE2147D646B001B731A /* InfoPlist.strings */ = {
+		FCD754931496AC42007FE662 /* InfoPlist.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
-				FC017EE3147D646B001B731A /* en */,
+				FCD754941496AC42007FE662 /* en */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
 		};
-		FC017EEE147D646B001B731A /* ViewController.xib */ = {
+		FCD754961496AC72007FE662 /* ViewController.xib */ = {
 			isa = PBXVariantGroup;
 			children = (
-				FC017EEF147D646B001B731A /* en */,
+				FCD754971496AC72007FE662 /* en */,
 			);
 			name = ViewController.xib;
 			sourceTree = "<group>";
@@ -248,6 +250,7 @@
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREFIX_HEADER = "";
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
@@ -257,6 +260,7 @@
 				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				INFOPLIST_FILE = "";
 				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
 				SDKROOT = iphoneos;
 			};
@@ -271,10 +275,12 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_PREFIX_HEADER = "";
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				INFOPLIST_FILE = "";
 				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				SDKROOT = iphoneos;
@@ -287,8 +293,8 @@
 			buildSettings = {
 				CLANG_ENABLE_OBJC_ARC = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "SuperTextField/UIToField-Prefix.pch";
-				INFOPLIST_FILE = "SuperTextField/UIToField-Info.plist";
+				GCC_PREFIX_HEADER = "UIToField/UIToField-Prefix.pch";
+				INFOPLIST_FILE = "UIToField/UIToField-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
 				PRODUCT_NAME = UIToField;
 				WRAPPER_EXTENSION = app;
@@ -300,8 +306,8 @@
 			buildSettings = {
 				CLANG_ENABLE_OBJC_ARC = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "SuperTextField/UIToField-Prefix.pch";
-				INFOPLIST_FILE = "SuperTextField/UIToField-Info.plist";
+				GCC_PREFIX_HEADER = "UIToField/UIToField-Prefix.pch";
+				INFOPLIST_FILE = "UIToField/UIToField-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
 				PRODUCT_NAME = UIToField;
 				WRAPPER_EXTENSION = app;
