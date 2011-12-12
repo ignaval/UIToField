@@ -20,7 +20,6 @@
 		FCD7548E1496ABC5007FE662 /* RecipientController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FCD7547C1496ABC5007FE662 /* RecipientController.xib */; };
 		FCD7548F1496ABC5007FE662 /* RecipientViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FCD7547E1496ABC5007FE662 /* RecipientViewCell.m */; };
 		FCD754901496ABC5007FE662 /* ShadowedTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = FCD754801496ABC5007FE662 /* ShadowedTableView.m */; };
-		FCD754911496ABC5007FE662 /* UIToField-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = FCD754811496ABC5007FE662 /* UIToField-Info.plist */; };
 		FCD754921496ABC5007FE662 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FCD754841496ABC5007FE662 /* ViewController.m */; };
 		FCD754951496AC42007FE662 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = FCD754931496AC42007FE662 /* InfoPlist.strings */; };
 		FCD754981496AC72007FE662 /* ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FCD754961496AC72007FE662 /* ViewController.xib */; };
@@ -192,7 +191,6 @@
 			files = (
 				FCD754871496ABC5007FE662 /* contact-pill.png in Resources */,
 				FCD7548E1496ABC5007FE662 /* RecipientController.xib in Resources */,
-				FCD754911496ABC5007FE662 /* UIToField-Info.plist in Resources */,
 				FCD754951496AC42007FE662 /* InfoPlist.strings in Resources */,
 				FCD754981496AC72007FE662 /* ViewController.xib in Resources */,
 			);
