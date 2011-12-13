@@ -30,10 +30,12 @@
     
     [fetchRequest setFetchBatchSize:20];
     
-    contactsResults = 
-    [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest 
-                                        managedObjectContext:_context sectionNameKeyPath:@"nameInitial" 
-                                                   cacheName:nil];
+    contactsResults = [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest managedObjectContext:_context sectionNameKeyPath:@"nameInitial" cacheName:nil];
+    
+    //uncomment if you do not want sections
+    //contactsResults = [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest managedObjectContext:_context sectionNameKeyPath:nil cacheName:nil];
+
+    
     contactsResults.delegate = self;
     [contactsResults retain];
     
@@ -194,6 +196,7 @@
 	return [[_recipients copy] autorelease];
 }
 
+//Comment both methods if you do not want sections
 -(NSArray *)contactsInitials{
     return [contactsResults sectionIndexTitles];
 }

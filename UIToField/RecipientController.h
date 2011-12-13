@@ -54,6 +54,8 @@
 	CGFloat			defaultHeight;
     
     UITableView			*contactMatchListView;
+    
+    UINavigationController * navController;
 
 }
 
@@ -69,6 +71,8 @@
 @property (nonatomic, assign) CGFloat					defaultHeight;
 
 @property (nonatomic, retain) UITableView				*contactMatchListView;
+
+@property (nonatomic, retain) UINavigationController	*navController;
 
 @property (nonatomic, retain) id <DataModelDelegate> model;
 

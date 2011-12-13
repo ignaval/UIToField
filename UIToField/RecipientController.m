@@ -36,6 +36,7 @@ NSString *blank = @" ";
 @synthesize defaultHeight;
 @synthesize model;
 @synthesize contactMatchListView;
+@synthesize navController;
 
 -(id)initWithModel:(id<DataModelDelegate>)modelL{
     self = [super init];
@@ -63,27 +64,30 @@ NSString *blank = @" ";
     tableController.tableView.delegate = self;
     tableController.tableView.dataSource = self;
     
-    UINavigationController * nav = [[UINavigationController alloc] initWithRootViewController:tableController];
-    nav.view.tag = navigationControllerTag;
+    if (!self.navController) {
+        self.navController = [[UINavigationController alloc] initWithRootViewController:tableController];
+    }
+    
+    self.navController.view.tag = navigationControllerTag;
     tableController.title = @"All Contacts";
     
     UIBarButtonItem * doneButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(dissmissTable)];
     tableController.navigationItem.rightBarButtonItem = doneButton;
     [doneButton release];
     
+    //Fake modal transition because of the lack of container view controllers in IOS4
     CGRect onScreenFrame = CGRectMake(0, 0, self.view.superview.bounds.size.width, self.view.superview.bounds.size.height);
     CGRect offScreenFrame = onScreenFrame;
     offScreenFrame.origin.y = self.view.superview.bounds.size.height;
     
-    nav.view.frame = offScreenFrame;
+    self.navController.view.frame = offScreenFrame;
     [UIView beginAnimations:@"FakeModalTransition" context:nil];
     [UIView setAnimationDuration:0.4f];
-    [self.view.superview addSubview:nav.view];
-    nav.view.frame = onScreenFrame;
+    [self.view.superview addSubview:self.navController.view];
+    self.navController.view.frame = onScreenFrame;
     [UIView commitAnimations];
     
     [tableController release];
-    [nav release];
 }
 
 #pragma mark - View lifecycle
@@ -198,6 +202,9 @@ NSString *blank = @" ";
     
     [model release];
     self.model = nil;
+    
+    [navController release];
+    self.navController = nil;
     
     [super dealloc];
 }
@@ -713,7 +720,7 @@ NSString *blank = @" ";
     if (tableView.tag == fullListTableTag && [model respondsToSelector:@selector(contactsInitials)]) {
         numOfSections = [[model contactsInitials] count];
     }
-    
+    NSLog(@"%d sections, tag: %d, responds: %d",numOfSections,tableView.tag == fullListTableTag,[model respondsToSelector:@selector(contactsInitials)]);
     return (numOfSections > 0)?numOfSections:1;
 }
 
@@ -765,6 +772,7 @@ NSString *blank = @" ";
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     UITableViewCell * cell = [tableView cellForRowAtIndexPath:indexPath];
+    [cell setSelected:NO animated:YES];
     
 	NSString * recipient = [NSString stringWithFormat:@"%@<%@>",cell.textLabel.text,cell.detailTextLabel.text];
 	
