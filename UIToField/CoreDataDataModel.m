@@ -76,7 +76,7 @@
 		if (self.context == nil) 
         { 
             self.context = [(AppDelegate *)[[UIApplication sharedApplication] delegate] managedObjectContext]; 
-            NSLog(@"After managedObjectContext: %@",  self.context);
+            //NSLog(@"After managedObjectContext: %@",  self.context);
         }
         
         [self contactsResults];
@@ -95,9 +95,9 @@
             }
         }
         
-        NSLog(@"now we have %d contacts loaded",[[contactsResults fetchedObjects] count]);
-        NSLog(@"number of initials = %d",[[contactsResults sectionIndexTitles] count]);
-        NSLog(@"number of sections = %d",[[contactsResults sections] count]);
+//        NSLog(@"now we have %d contacts loaded",[[contactsResults fetchedObjects] count]);
+//        NSLog(@"number of initials = %d",[[contactsResults sectionIndexTitles] count]);
+//        NSLog(@"number of sections = %d",[[contactsResults sections] count]);
         
         _recipients = [[NSMutableArray arrayWithCapacity:1] retain];
         foundPeople = [[NSMutableArray array] retain];

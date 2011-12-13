@@ -211,8 +211,9 @@ NSString *blank = @" ";
 
 - (void)layoutSubviews
 {
-    NSLog(@"laying subviews...");
-	// we're going to loop through all the view looking for RecipientViewCell views and lay them out within this view.
+    //NSLog(@"laying subviews...");
+	
+    // we're going to loop through all the view looking for RecipientViewCell views and lay them out within this view.
 	// If there are no RecipientViewCell then nothing will be changed.  The layout process knows about
 	// the three views defined in the xib and will move them as necessary and well as changes the size of this view
 	// as needed
@@ -264,7 +265,6 @@ NSString *blank = @" ";
 				{
                     if (layoutViewCount == 1) 
                     {
-                        NSLog(@"first line shrink");
                         subViewRect.origin = cellLayoutPoint;
                         subViewRect.origin.y += kOriginShift;
                         subViewRect.size.width = self.view.frame.size.width - cellLayoutPoint.x - 8;
@@ -273,7 +273,6 @@ NSString *blank = @" ";
                     }else if (subViewRect.size.width + 4 < self.view.frame.size.width)
 					{
                         // now we need to see if it will fit on a line all by itself
-                        NSLog(@"adding line B");
 						// it fits
                         cellLayoutPoint.x = kLeftInset;
 						cellLayoutPoint.y += growHeight;
@@ -292,7 +291,6 @@ NSString *blank = @" ";
 						// if this is the very first view being layedout then
 						// we'll keep it on the first line and just shrink it.
 						
-                        NSLog(@"adding line D");
                         cellLayoutPoint.x = kLeftInset;
                         cellLayoutPoint.y += growHeight;
                         neededRows ++;
@@ -324,7 +322,6 @@ NSString *blank = @" ";
 	else
 	{
 		// it doesn't fit so lets make adjustments
-		NSLog(@"adding line E");
 		fieldLayoutPoint.x = kLeftInset;
 		fieldLayoutPoint.y += growHeight;
 		neededRows ++;
@@ -342,7 +339,7 @@ NSString *blank = @" ";
 	CGFloat newHeight = neededRows * growHeight;
 	if ( newHeight > self.defaultHeight )
 	{
-        NSLog(@"new: %f max: %d",newHeight,maxHeight);
+        //NSLog(@"new: %f max: %d",newHeight,maxHeight);
         if (newHeight > maxHeight) {
             frameRect.size.height = maxHeight;
             self.view.frame = frameRect;
@@ -429,7 +426,6 @@ NSString *blank = @" ";
 }
 
 -(void)keyboardWillHide{
-    NSLog(@"called willHide");
     //show one line name list
     if ([self.entryField isFirstResponder]) {
         [self setUpNameLabel];
@@ -438,7 +434,6 @@ NSString *blank = @" ";
 
 -(void)keyboardWillShow{
     //show contact pills
-    NSLog(@"called willshow");
     if ([self.entryField isFirstResponder]) {
         for (UIView *subView in self.view.subviews){
             if ([subView isKindOfClass:[RecipientViewCell class]]){
@@ -720,7 +715,7 @@ NSString *blank = @" ";
     if (tableView.tag == fullListTableTag && [model respondsToSelector:@selector(contactsInitials)]) {
         numOfSections = [[model contactsInitials] count];
     }
-    NSLog(@"%d sections, tag: %d, responds: %d",numOfSections,tableView.tag == fullListTableTag,[model respondsToSelector:@selector(contactsInitials)]);
+
     return (numOfSections > 0)?numOfSections:1;
 }
 
