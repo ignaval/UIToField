@@ -7,6 +7,7 @@
 //
 
 #import "ViewController.h"
+#import "ArrayDataModel.h"
 
 @implementation ViewController
 
@@ -44,7 +45,10 @@
 {
     [super viewDidLoad];
     
-    recipientController = [[RecipientController alloc] init];
+    ArrayDataModel * model = [[ArrayDataModel alloc] init];
+    recipientController = [[RecipientController alloc] initWithModel:model];
+    [model release];
+    
     [self.view addSubview:recipientController.view];
     [self.recipientController setUpContactMatchView];
 }

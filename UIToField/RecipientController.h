@@ -54,11 +54,11 @@
 	CGFloat			defaultHeight;
     
     UITableView			*contactMatchListView;
-    
-    id <DataModelDelegate> model;
+
 }
 
 -(void)setUpContactMatchView;
+-(id)initWithModel:(id<DataModelDelegate>)modelL;
 
 @property (nonatomic, retain) IBOutlet UIButton			*addFromAddressBookButton;
 @property (nonatomic, retain) IBOutlet UITextField		*entryField;
@@ -70,6 +70,6 @@
 
 @property (nonatomic, retain) UITableView				*contactMatchListView;
 
-@property (nonatomic, retain) id model;
+@property (nonatomic, retain) id <DataModelDelegate> model;
 
 @end

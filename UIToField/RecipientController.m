@@ -8,7 +8,6 @@
 
 #import "RecipientController.h"
 #import "RecipientViewCell.h"
-#import "ArrayDataModel.h"
 #import "ShadowedTableView.h"
 
 #define	kLeftInset 6
@@ -38,13 +37,11 @@ NSString *blank = @" ";
 @synthesize model;
 @synthesize contactMatchListView;
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+-(id)initWithModel:(id<DataModelDelegate>)modelL{
+    self = [super init];
     if (self) {
         // Custom initialization
-        self.model = [[ArrayDataModel alloc] init];
-        [self.model retain];
+        self.model = modelL;
     }
     return self;
 }
@@ -513,7 +510,7 @@ NSString *blank = @" ";
 - (void)deleteSelectedRecipient;
 {
 	//for (Recipient *recipient in [MultiRecipientModel sharedMultiRecipientModel].recipients )
-    for (Recipient *recipient in model.recipients )
+    for (Recipient *recipient in self.model.recipients )
 	{
 		if ([recipient.recipientViewCell isEqual:self.selectedRecipientCell])
 		{

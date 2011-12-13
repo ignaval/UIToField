@@ -15,7 +15,6 @@
 		FCD754871496ABC5007FE662 /* contact-pill.png in Resources */ = {isa = PBXBuildFile; fileRef = FCD7546F1496ABC5007FE662 /* contact-pill.png */; };
 		FCD7548A1496ABC5007FE662 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = FCD754751496ABC5007FE662 /* main.m */; };
 		FCD7548B1496ABC5007FE662 /* Recipient.m in Sources */ = {isa = PBXBuildFile; fileRef = FCD754771496ABC5007FE662 /* Recipient.m */; };
-		FCD7548C1496ABC5007FE662 /* RecipientControl.m in Sources */ = {isa = PBXBuildFile; fileRef = FCD754791496ABC5007FE662 /* RecipientControl.m */; };
 		FCD7548D1496ABC5007FE662 /* RecipientController.m in Sources */ = {isa = PBXBuildFile; fileRef = FCD7547B1496ABC5007FE662 /* RecipientController.m */; };
 		FCD7548E1496ABC5007FE662 /* RecipientController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FCD7547C1496ABC5007FE662 /* RecipientController.xib */; };
 		FCD7548F1496ABC5007FE662 /* RecipientViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FCD7547E1496ABC5007FE662 /* RecipientViewCell.m */; };
@@ -39,8 +38,6 @@
 		FCD754751496ABC5007FE662 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = UIToField/main.m; sourceTree = SOURCE_ROOT; };
 		FCD754761496ABC5007FE662 /* Recipient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Recipient.h; path = UIToField/Recipient.h; sourceTree = SOURCE_ROOT; };
 		FCD754771496ABC5007FE662 /* Recipient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Recipient.m; path = UIToField/Recipient.m; sourceTree = SOURCE_ROOT; };
-		FCD754781496ABC5007FE662 /* RecipientControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RecipientControl.h; path = UIToField/RecipientControl.h; sourceTree = SOURCE_ROOT; };
-		FCD754791496ABC5007FE662 /* RecipientControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RecipientControl.m; path = UIToField/RecipientControl.m; sourceTree = SOURCE_ROOT; };
 		FCD7547A1496ABC5007FE662 /* RecipientController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RecipientController.h; path = UIToField/RecipientController.h; sourceTree = SOURCE_ROOT; };
 		FCD7547B1496ABC5007FE662 /* RecipientController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RecipientController.m; path = UIToField/RecipientController.m; sourceTree = SOURCE_ROOT; };
 		FCD7547C1496ABC5007FE662 /* RecipientController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = RecipientController.xib; path = UIToField/RecipientController.xib; sourceTree = SOURCE_ROOT; };
@@ -103,24 +100,14 @@
 		FC017EDF147D646B001B731A /* UIToField */ = {
 			isa = PBXGroup;
 			children = (
+				FCE7CF991496DA6A0082EB2F /* UIToFieldSupport */,
 				FCD7546B1496ABC5007FE662 /* AppDelegate.h */,
 				FCD7546C1496ABC5007FE662 /* AppDelegate.m */,
 				FCD7546D1496ABC5007FE662 /* ArrayDataModel.h */,
 				FCD7546E1496ABC5007FE662 /* ArrayDataModel.m */,
-				FCD754761496ABC5007FE662 /* Recipient.h */,
-				FCD754771496ABC5007FE662 /* Recipient.m */,
-				FCD754781496ABC5007FE662 /* RecipientControl.h */,
-				FCD754791496ABC5007FE662 /* RecipientControl.m */,
-				FCD7547A1496ABC5007FE662 /* RecipientController.h */,
-				FCD7547B1496ABC5007FE662 /* RecipientController.m */,
-				FCD7547D1496ABC5007FE662 /* RecipientViewCell.h */,
-				FCD7547E1496ABC5007FE662 /* RecipientViewCell.m */,
-				FCD7547F1496ABC5007FE662 /* ShadowedTableView.h */,
-				FCD754801496ABC5007FE662 /* ShadowedTableView.m */,
 				FCD754831496ABC5007FE662 /* ViewController.h */,
 				FCD754841496ABC5007FE662 /* ViewController.m */,
 				FCD754961496AC72007FE662 /* ViewController.xib */,
-				FCD7547C1496ABC5007FE662 /* RecipientController.xib */,
 				FC017EE0147D646B001B731A /* Supporting Files */,
 			);
 			name = UIToField;
@@ -137,6 +124,22 @@
 				FCD754821496ABC5007FE662 /* UIToField-Prefix.pch */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		FCE7CF991496DA6A0082EB2F /* UIToFieldSupport */ = {
+			isa = PBXGroup;
+			children = (
+				FCD754761496ABC5007FE662 /* Recipient.h */,
+				FCD754771496ABC5007FE662 /* Recipient.m */,
+				FCD7547A1496ABC5007FE662 /* RecipientController.h */,
+				FCD7547B1496ABC5007FE662 /* RecipientController.m */,
+				FCD7547D1496ABC5007FE662 /* RecipientViewCell.h */,
+				FCD7547E1496ABC5007FE662 /* RecipientViewCell.m */,
+				FCD7547F1496ABC5007FE662 /* ShadowedTableView.h */,
+				FCD754801496ABC5007FE662 /* ShadowedTableView.m */,
+				FCD7547C1496ABC5007FE662 /* RecipientController.xib */,
+			);
+			name = UIToFieldSupport;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -207,7 +210,6 @@
 				FCD754861496ABC5007FE662 /* ArrayDataModel.m in Sources */,
 				FCD7548A1496ABC5007FE662 /* main.m in Sources */,
 				FCD7548B1496ABC5007FE662 /* Recipient.m in Sources */,
-				FCD7548C1496ABC5007FE662 /* RecipientControl.m in Sources */,
 				FCD7548D1496ABC5007FE662 /* RecipientController.m in Sources */,
 				FCD7548F1496ABC5007FE662 /* RecipientViewCell.m in Sources */,
 				FCD754901496ABC5007FE662 /* ShadowedTableView.m in Sources */,
