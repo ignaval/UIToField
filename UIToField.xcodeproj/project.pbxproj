@@ -22,6 +22,7 @@
 		FCD754921496ABC5007FE662 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FCD754841496ABC5007FE662 /* ViewController.m */; };
 		FCD754951496AC42007FE662 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = FCD754931496AC42007FE662 /* InfoPlist.strings */; };
 		FCD754981496AC72007FE662 /* ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FCD754961496AC72007FE662 /* ViewController.xib */; };
+		FCE7CF9D1496DB2D0082EB2F /* CoreDataDataModel.m in Sources */ = {isa = PBXBuildFile; fileRef = FCE7CF9C1496DB2D0082EB2F /* CoreDataDataModel.m */; };
 		FCF2E5B8147F385100A5EAA1 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FCF2E5B5147F383F00A5EAA1 /* QuartzCore.framework */; };
 /* End PBXBuildFile section */
 
@@ -51,6 +52,8 @@
 		FCD754841496ABC5007FE662 /* ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ViewController.m; path = UIToField/ViewController.m; sourceTree = SOURCE_ROOT; };
 		FCD754941496AC42007FE662 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = UIToField/en.lproj/InfoPlist.strings; sourceTree = SOURCE_ROOT; };
 		FCD754971496AC72007FE662 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = UIToField/en.lproj/ViewController.xib; sourceTree = SOURCE_ROOT; };
+		FCE7CF9B1496DB2D0082EB2F /* CoreDataDataModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CoreDataDataModel.h; path = UIToField/CoreDataDataModel.h; sourceTree = SOURCE_ROOT; };
+		FCE7CF9C1496DB2D0082EB2F /* CoreDataDataModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CoreDataDataModel.m; path = UIToField/CoreDataDataModel.m; sourceTree = SOURCE_ROOT; };
 		FCF2E5B5147F383F00A5EAA1 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
@@ -105,6 +108,8 @@
 				FCD7546C1496ABC5007FE662 /* AppDelegate.m */,
 				FCD7546D1496ABC5007FE662 /* ArrayDataModel.h */,
 				FCD7546E1496ABC5007FE662 /* ArrayDataModel.m */,
+				FCE7CF9B1496DB2D0082EB2F /* CoreDataDataModel.h */,
+				FCE7CF9C1496DB2D0082EB2F /* CoreDataDataModel.m */,
 				FCD754831496ABC5007FE662 /* ViewController.h */,
 				FCD754841496ABC5007FE662 /* ViewController.m */,
 				FCD754961496AC72007FE662 /* ViewController.xib */,
@@ -214,6 +219,7 @@
 				FCD7548F1496ABC5007FE662 /* RecipientViewCell.m in Sources */,
 				FCD754901496ABC5007FE662 /* ShadowedTableView.m in Sources */,
 				FCD754921496ABC5007FE662 /* ViewController.m in Sources */,
+				FCE7CF9D1496DB2D0082EB2F /* CoreDataDataModel.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

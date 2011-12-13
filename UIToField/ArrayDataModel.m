@@ -10,7 +10,6 @@
 
 @implementation ArrayDataModel
 
-@synthesize foundPeople;
 @dynamic recipients;
 
 -(id)init{
@@ -30,6 +29,7 @@
     
     [_recipients release];
     [contacts release];
+    [foundPeople release];
 }
 
 -(NSInteger)totalContactsCount{
@@ -38,24 +38,24 @@
 
 - (BOOL)foundMatchesForSearchString:(NSString*)searchString{
     
-    [self.foundPeople removeAllObjects];
+    [foundPeople removeAllObjects];
     
     for (NSString * c in [contacts allKeys]) {
         if ([[c lowercaseString] hasPrefix:[searchString lowercaseString]]) {
-            [self.foundPeople addObject:c];
+            [foundPeople addObject:c];
         }
     }
     
-    return [self.foundPeople count] > 0;
+    return [foundPeople count] > 0;
 }
 
 - (NSInteger)countForSearchMatches{
-    return [self.foundPeople count];
+    return [foundPeople count];
 }
 
 - (NSString*)personNameForIndexInResults:(NSInteger)index{
     
-    return [[self.foundPeople sortedArrayUsingSelector:@selector(caseInsensitiveCompare:)] objectAtIndex:index];
+    return [[foundPeople sortedArrayUsingSelector:@selector(caseInsensitiveCompare:)] objectAtIndex:index];
     
 }
 

@@ -7,14 +7,12 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "ViewController.h"
+#import "RecipientController.h"
 
 @interface ArrayDataModel : NSObject <DataModelDelegate>{
     NSMutableArray * _recipients;
     NSDictionary * contacts;
     NSMutableArray * foundPeople;
 }
-
-@property (nonatomic, retain) NSMutableArray *foundPeople;
 
 @end

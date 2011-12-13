@@ -103,8 +103,6 @@ NSString *blank = @" ";
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillHide) name:UIKeyboardWillHideNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillShow) name:UIKeyboardWillShowNotification object:nil];
     
-//    [[UIDevice currentDevice] beginGeneratingDeviceOrientationNotifications];
-//    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(deviceRotated) name:@"UIDeviceOrientationDidChangeNotification" object:nil];
 }
 
 - (void)handleTap:(UITapGestureRecognizer *)sender {
@@ -248,7 +246,6 @@ NSString *blank = @" ";
 				// it doesn't fit on the current line with the add contact button, let check to see
 				// if it can with if we move the add button
 				if (cellLayoutPoint.x + subViewRect.size.width + 8 < self.view.frame.size.width - 50)
-                //if (rightInset - (cellLayoutPoint.x + subViewRect.size.width) > 7)
 				{
 					// it fits in the view so just place it at the layoutPoint
 					subViewRect.origin = cellLayoutPoint;
@@ -502,21 +499,18 @@ NSString *blank = @" ";
 	newRecipient.recipientNameAddress = recipient;
 	newRecipient.recipientViewCell = recipientCell;
 	
-	//[[MultiRecipientModel sharedMultiRecipientModel] addRecipient:newRecipient];
     [model addRecipient:newRecipient];
     
 }
 
 - (void)deleteSelectedRecipient;
 {
-	//for (Recipient *recipient in [MultiRecipientModel sharedMultiRecipientModel].recipients )
     for (Recipient *recipient in self.model.recipients )
 	{
 		if ([recipient.recipientViewCell isEqual:self.selectedRecipientCell])
 		{
 			[[recipient.recipientViewCell superview] setNeedsLayout]; 
 			[recipient.recipientViewCell removeFromSuperview];
-			//[[MultiRecipientModel sharedMultiRecipientModel] removeRecipient:recipient];
             [model removeRecipient:recipient];
 			self.selectedRecipientCell = nil;
             [self layoutSubviews];
@@ -527,7 +521,6 @@ NSString *blank = @" ";
 
 - (void)selectLastRecipientAdded;
 {
-	//Recipient *recipient = [[MultiRecipientModel sharedMultiRecipientModel] lastRecipient];
     Recipient *recipient = [model lastRecipient];
     
 	self.selectedRecipientCell = recipient.recipientViewCell;
@@ -616,7 +609,6 @@ NSString *blank = @" ";
 	textField.text = blank;
     
     [self hideContactMatchListViewAnimated:YES];
-    //[textField resignFirstResponder];
 	
 	return YES;
 }
@@ -793,20 +785,6 @@ NSString *blank = @" ";
 -(BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation{
     return YES;
 }
-
-//-(void)deviceRotated{
-//    NSLog(@"rotation to %d",[[UIDevice currentDevice] orientation]);
-//    
-//    UIDeviceOrientation orientation = [[UIDevice currentDevice] orientation];
-//    
-//    NSLog(@"rotation to %d",self.interfaceOrientation);
-//    //NSLog(@"rotation to %d",self.delegate.interfaceOrientation);
-//    
-//    if (orientation != UIDeviceOrientationPortraitUpsideDown) {
-//        //[self setUpControllerView];
-//        //[self setUpContactMatchView];
-//    }
-//}
 
 
 @end

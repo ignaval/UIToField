@@ -8,6 +8,7 @@
 
 #import "ViewController.h"
 #import "ArrayDataModel.h"
+#import "CoreDataDataModel.h"
 
 @implementation ViewController
 
@@ -45,7 +46,11 @@
 {
     [super viewDidLoad];
     
+    //Un comment according to the data model you want to use
+    
     ArrayDataModel * model = [[ArrayDataModel alloc] init];
+    //CoreDataDataModel * model = [[CoreDataDataModel alloc] init];
+    
     recipientController = [[RecipientController alloc] initWithModel:model];
     [model release];
     
