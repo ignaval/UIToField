@@ -23,6 +23,7 @@
 // just the address joe@softwareops.com
 // 8005552345 for phone numbers
 
+@property (nonatomic, readonly) NSString		*recipientName; 
 @property (nonatomic, readonly) NSString		*recipientAddress;  
 
 @property (nonatomic, retain) RecipientViewCell	*recipientViewCell;

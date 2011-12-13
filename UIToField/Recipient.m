@@ -26,26 +26,15 @@
 
 - (NSString*)recipientAddress;
 {
-	NSScanner *titleScanner = [NSScanner scannerWithString:self.recipientNameAddress];
-	NSString *returnString;
-	
-	if ( [titleScanner scanUpToString:@"<" intoString:&returnString] == NO )
-	{
-		returnString = nil;
-	}
-	else
-		if ( [titleScanner scanUpToString:@">" intoString:&returnString] == NO )
-		{
-			returnString = nil;
-		}
-		else
-		{
-			NSCharacterSet *removeSet = [NSCharacterSet characterSetWithCharactersInString:@"<> "];
-			returnString = [returnString stringByTrimmingCharactersInSet:removeSet];
-		}
-	
-	return returnString ;
+    NSString * address = [self.recipientNameAddress substringFromIndex:[self.recipientNameAddress rangeOfString:@"<"].location + 1];
+    
+    return [address substringToIndex:[address rangeOfString:@">"].location];
 	
 }
+
+-(NSString *)recipientName{
+    return [self.recipientNameAddress substringToIndex:[self.recipientNameAddress rangeOfString:@"<"].location];
+}
+
 @end
 

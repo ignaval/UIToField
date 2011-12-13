@@ -40,6 +40,17 @@
     [self.recipientController.entryField resignFirstResponder];
 }
 
+-(IBAction)showRecipients:(id)sender{
+    
+    namesAndAddressesLabel.text = @"";
+    
+    for (Recipient * r in [self.recipientController.model recipients]) {
+        namesAndAddressesLabel.text = [namesAndAddressesLabel.text stringByAppendingFormat:@"%@ %@\n",r.recipientName,r.recipientAddress];
+        
+        NSLog(@"Name: %@ Address: %@",r.recipientName,r.recipientAddress);
+    }
+}
+
 #pragma mark - View lifecycle
 
 - (void)viewDidLoad

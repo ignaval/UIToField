@@ -13,6 +13,8 @@
     
     RecipientController * recipientController;
     
+    IBOutlet UILabel * namesAndAddressesLabel;
+    
 }
 
 @property (nonatomic, retain) IBOutlet RecipientController	*recipientController;
