@@ -39,7 +39,7 @@
 @optional
 
 //Implement if you want sections in the complete contact list
-- (NSInteger)contactsForInitial:(NSString *)initial;
+- (NSInteger)contactsForInitial:(NSString *)initial atIndex:(NSInteger) index;
 - (NSArray *)contactsInitials;
 
 @end

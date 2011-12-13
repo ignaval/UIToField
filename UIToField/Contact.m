@@ -13,5 +13,13 @@
 
 @dynamic name;
 @dynamic address;
+@dynamic nameInitial;
+
+- (NSString *) nameInitial {
+    [self willAccessValueForKey:@"nameInitial"];
+    NSString * initial = [[[self name] substringToIndex:1] uppercaseString];
+    [self didAccessValueForKey:@"nameInitial"];
+    return initial;
+}
 
 @end

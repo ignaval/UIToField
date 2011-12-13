@@ -14,5 +14,6 @@
 
 @property (nonatomic, retain) NSString * name;
 @property (nonatomic, retain) NSString * address;
+@property (nonatomic, retain) NSString * nameInitial;
 
 @end

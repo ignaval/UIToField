@@ -9,8 +9,15 @@
 #import <Foundation/Foundation.h>
 #import "RecipientController.h"
 
-@interface CoreDataDataModel : NSObject <DataModelDelegate>{
+@interface CoreDataDataModel : NSObject <DataModelDelegate, NSFetchedResultsControllerDelegate>{
+    NSManagedObjectContext *_context;
     
+    NSFetchedResultsController * contactsResults;
+    
+    NSMutableArray * _recipients;
+    NSMutableArray * foundPeople;
 }
+
+@property (nonatomic, retain) NSManagedObjectContext *context;
 
 @end

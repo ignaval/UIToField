@@ -698,7 +698,7 @@ NSString *blank = @" ";
 
 - (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section{
     
-	if (tableView.tag == fullListTableTag && [model respondsToSelector:@selector(contactsInitials)]) {
+	if (tableView.tag == fullListTableTag && [model respondsToSelector:@selector(contactsInitials)] && [[model contactsInitials] count] > 0) {
         return (NSString *)[[model contactsInitials] objectAtIndex:section];
     }
     
@@ -724,7 +724,7 @@ NSString *blank = @" ";
     
     if (tableView.tag == fullListTableTag) {
         if ([model respondsToSelector:@selector(contactsInitials)] && [[model contactsInitials] count] > 0) {
-            numOfRows = [model contactsForInitial:(NSString *)[[model contactsInitials] objectAtIndex:section]];
+            numOfRows = [model contactsForInitial:(NSString *)[[model contactsInitials] objectAtIndex:section] atIndex:section];
         }else{
             numOfRows = [model totalContactsCount];
         }

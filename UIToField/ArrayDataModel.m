@@ -126,7 +126,7 @@
     return [[set allObjects] sortedArrayUsingSelector:@selector(caseInsensitiveCompare:)];
 }
 
--(NSInteger)contactsForInitial:(NSString *)initial{
+-(NSInteger)contactsForInitial:(NSString *)initial atIndex:(NSInteger) index{
     int contactsN = 0;
     
     for (NSString * c in [contacts allKeys]) {
