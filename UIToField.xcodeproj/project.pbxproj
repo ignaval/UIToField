@@ -10,6 +10,7 @@
 		FC017EDA147D646B001B731A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FC017ED9147D646B001B731A /* UIKit.framework */; };
 		FC017EDC147D646B001B731A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FC017EDB147D646B001B731A /* Foundation.framework */; };
 		FC017EDE147D646B001B731A /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FC017EDD147D646B001B731A /* CoreGraphics.framework */; };
+		FC55C5991497376B00D085BE /* ExampleModel.xcdatamodel in Sources */ = {isa = PBXBuildFile; fileRef = FC55C5981497376B00D085BE /* ExampleModel.xcdatamodel */; };
 		FCD754851496ABC5007FE662 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = FCD7546C1496ABC5007FE662 /* AppDelegate.m */; };
 		FCD754861496ABC5007FE662 /* ArrayDataModel.m in Sources */ = {isa = PBXBuildFile; fileRef = FCD7546E1496ABC5007FE662 /* ArrayDataModel.m */; };
 		FCD754871496ABC5007FE662 /* contact-pill.png in Resources */ = {isa = PBXBuildFile; fileRef = FCD7546F1496ABC5007FE662 /* contact-pill.png */; };
@@ -22,6 +23,7 @@
 		FCD754921496ABC5007FE662 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FCD754841496ABC5007FE662 /* ViewController.m */; };
 		FCD754951496AC42007FE662 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = FCD754931496AC42007FE662 /* InfoPlist.strings */; };
 		FCD754981496AC72007FE662 /* ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = FCD754961496AC72007FE662 /* ViewController.xib */; };
+		FCD8B9711497125C005334C5 /* Contact.m in Sources */ = {isa = PBXBuildFile; fileRef = FCD8B9701497125C005334C5 /* Contact.m */; };
 		FCE7CF9D1496DB2D0082EB2F /* CoreDataDataModel.m in Sources */ = {isa = PBXBuildFile; fileRef = FCE7CF9C1496DB2D0082EB2F /* CoreDataDataModel.m */; };
 		FCE7CFA01496E25C0082EB2F /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FCE7CF9E1496E24D0082EB2F /* CoreData.framework */; };
 		FCF2E5B8147F385100A5EAA1 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FCF2E5B5147F383F00A5EAA1 /* QuartzCore.framework */; };
@@ -32,6 +34,7 @@
 		FC017ED9147D646B001B731A /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		FC017EDB147D646B001B731A /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		FC017EDD147D646B001B731A /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		FC55C5981497376B00D085BE /* ExampleModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; name = ExampleModel.xcdatamodel; path = UIToField/ExampleModel.xcdatamodel; sourceTree = SOURCE_ROOT; };
 		FCD7546B1496ABC5007FE662 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = UIToField/AppDelegate.h; sourceTree = SOURCE_ROOT; };
 		FCD7546C1496ABC5007FE662 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AppDelegate.m; path = UIToField/AppDelegate.m; sourceTree = SOURCE_ROOT; };
 		FCD7546D1496ABC5007FE662 /* ArrayDataModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ArrayDataModel.h; path = UIToField/ArrayDataModel.h; sourceTree = SOURCE_ROOT; };
@@ -53,6 +56,8 @@
 		FCD754841496ABC5007FE662 /* ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ViewController.m; path = UIToField/ViewController.m; sourceTree = SOURCE_ROOT; };
 		FCD754941496AC42007FE662 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = UIToField/en.lproj/InfoPlist.strings; sourceTree = SOURCE_ROOT; };
 		FCD754971496AC72007FE662 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = UIToField/en.lproj/ViewController.xib; sourceTree = SOURCE_ROOT; };
+		FCD8B96F1497125C005334C5 /* Contact.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Contact.h; path = UIToField/Contact.h; sourceTree = SOURCE_ROOT; };
+		FCD8B9701497125C005334C5 /* Contact.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Contact.m; path = UIToField/Contact.m; sourceTree = SOURCE_ROOT; };
 		FCE7CF9B1496DB2D0082EB2F /* CoreDataDataModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CoreDataDataModel.h; path = UIToField/CoreDataDataModel.h; sourceTree = SOURCE_ROOT; };
 		FCE7CF9C1496DB2D0082EB2F /* CoreDataDataModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CoreDataDataModel.m; path = UIToField/CoreDataDataModel.m; sourceTree = SOURCE_ROOT; };
 		FCE7CF9E1496E24D0082EB2F /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
@@ -110,13 +115,16 @@
 				FCE7CF991496DA6A0082EB2F /* UIToFieldSupport */,
 				FCD7546B1496ABC5007FE662 /* AppDelegate.h */,
 				FCD7546C1496ABC5007FE662 /* AppDelegate.m */,
+				FCD754831496ABC5007FE662 /* ViewController.h */,
+				FCD754841496ABC5007FE662 /* ViewController.m */,
+				FCD754961496AC72007FE662 /* ViewController.xib */,
 				FCD7546D1496ABC5007FE662 /* ArrayDataModel.h */,
 				FCD7546E1496ABC5007FE662 /* ArrayDataModel.m */,
 				FCE7CF9B1496DB2D0082EB2F /* CoreDataDataModel.h */,
 				FCE7CF9C1496DB2D0082EB2F /* CoreDataDataModel.m */,
-				FCD754831496ABC5007FE662 /* ViewController.h */,
-				FCD754841496ABC5007FE662 /* ViewController.m */,
-				FCD754961496AC72007FE662 /* ViewController.xib */,
+				FC55C5981497376B00D085BE /* ExampleModel.xcdatamodel */,
+				FCD8B96F1497125C005334C5 /* Contact.h */,
+				FCD8B9701497125C005334C5 /* Contact.m */,
 				FC017EE0147D646B001B731A /* Supporting Files */,
 			);
 			name = UIToField;
@@ -224,6 +232,8 @@
 				FCD754901496ABC5007FE662 /* ShadowedTableView.m in Sources */,
 				FCD754921496ABC5007FE662 /* ViewController.m in Sources */,
 				FCE7CF9D1496DB2D0082EB2F /* CoreDataDataModel.m in Sources */,
+				FCD8B9711497125C005334C5 /* Contact.m in Sources */,
+				FC55C5991497376B00D085BE /* ExampleModel.xcdatamodel in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
