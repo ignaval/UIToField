@@ -170,15 +170,7 @@ NSString *blank = @" ";
     self.contactMatchListView = [[[ShadowedTableView alloc] initWithFrame:frameRect style:UITableViewStylePlain] autorelease];
     self.contactMatchListView.backgroundColor = [UIColor colorWithWhite:0.91 alpha:1.0];
     self.contactMatchListView.tag = matchListTableTag;
-    
-    CGRect frame = self.contactMatchListView.bounds;
-    frame.origin.y = -frame.size.height*2;
-    frame.size.height = frame.size.height *2;
-    UIView* upView = [[UIView alloc] initWithFrame:frame];
-    upView.backgroundColor = self.contactMatchListView.backgroundColor;
-    [self.contactMatchListView addSubview:upView];
-    [upView release];
-    
+        
     [self.view.superview addSubview:self.contactMatchListView];
     self.contactMatchListView.hidden = YES;
     self.contactMatchListView.autoresizingMask = UIViewAutoresizingFlexibleWidth;
