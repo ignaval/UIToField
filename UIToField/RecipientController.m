@@ -55,7 +55,72 @@ NSString *blank = @" ";
     // Release any cached data, images, etc that aren't in use.
 }
 
+- (void)showContactMatchListView;
+{
+	if (self.contactMatchListView.hidden == YES)
+	{
+		self.contactMatchListView.alpha = 0.0;
+        self.contactMatchListView.hidden = NO;
+        
+        [UIView beginAnimations:nil context:NULL];
+        [UIView setAnimationDuration:kFadeAnimationDuration];
+        
+        self.contactMatchListView.alpha = 1.0;
+        
+        if (self.view.frame.size.height > self.defaultHeight)
+        {
+            CGRect frame = self.view.frame;
+            frame.origin.y = -frame.size.height + self.defaultHeight;
+            self.view.frame = frame;
+        }
+        
+        [UIView commitAnimations];
+        [self.contactMatchListView reloadData];
+	}
+	else
+		[self.contactMatchListView reloadData];
+	
+}
+
+- (void)hideContactMatchListViewAnimated:(BOOL)animated;
+{
+	if (self.contactMatchListView.hidden == NO)
+	{
+		if (animated)
+		{
+			[UIView beginAnimations:nil context:NULL];
+			[UIView setAnimationDuration:kFadeAnimationDuration];
+		}
+		self.contactMatchListView.alpha = 0.0;
+		
+		if (self.view.frame.origin.y < 0)
+		{
+			CGRect frame = self.view.frame;
+			frame.origin.y = 0;
+			self.view.frame = frame;
+		}
+        
+		if (animated)
+		{
+			[UIView setAnimationDelegate:self];
+			[UIView setAnimationDidStopSelector:@selector(hideContactMatchListAnimationDidStop)];
+			
+			[UIView commitAnimations];
+		}
+		else
+			self.contactMatchListView.hidden = YES;
+	}
+    
+}
+
+- (void)hideContactMatchListAnimationDidStop;
+{
+	self.contactMatchListView.hidden = YES;
+}
+
 -(IBAction)showFullContactList:(id)sender{
+    self.entryField.text = blank;
+    [self hideContactMatchListViewAnimated:NO];
     [self.entryField resignFirstResponder];
     
     UITableViewController * tableController = [[UITableViewController alloc] initWithStyle:UITableViewStylePlain];
@@ -162,7 +227,7 @@ NSString *blank = @" ";
     if (self.interfaceOrientation == UIInterfaceOrientationPortrait) {
         frameRect.size.height -= (self.view.frame.size.height + keyboardHeightPortrait);
     }else{
-        frameRect.size.height -= (self.view.frame.size.height + keyboardHeightLandscape);
+        frameRect.size.height -= (self.view.frame.size.width + keyboardHeightLandscape);
     }
     
     //NSLog(@"h: %f w: %f x: %f y: %f",frameRect.size.height,frameRect.size.width,frameRect.origin.x,frameRect.origin.y);
@@ -216,11 +281,17 @@ NSString *blank = @" ";
 	NSInteger growHeight = self.entryField.frame.size.height;
     NSInteger maxHeight;
     
+    CGRect frame = self.contactMatchListView.frame;
+    
     if ([[UIDevice currentDevice] orientation] == UIInterfaceOrientationPortrait) {
         maxHeight = self.view.superview.frame.size.height - keyboardHeightPortrait - self.defaultHeight;
+        frame.size.height = self.view.superview.frame.size.height - self.view.frame.size.height - keyboardHeightPortrait;
     }else{
-        maxHeight = self.view.superview.frame.size.height - keyboardHeightLandscape - self.defaultHeight;
+        maxHeight = self.view.superview.frame.size.width - keyboardHeightLandscape - self.defaultHeight;
+        frame.size.height = self.view.superview.frame.size.width - self.view.frame.size.height - keyboardHeightLandscape;
     }
+    
+    self.contactMatchListView.frame = frame;
 	
 	cellLayoutPoint.x += self.toLabel.frame.size.width + 4;
 	NSInteger rightInset = self.addFromAddressBookButton.frame.origin.x - 4;
@@ -527,69 +598,6 @@ NSString *blank = @" ";
 		self.entryField.hidden = NO;
 	else
 		self.entryField.hidden = YES;
-}
-
-- (void)showContactMatchListView;
-{
-	if (self.contactMatchListView.hidden == YES)
-	{
-		self.contactMatchListView.alpha = 0.0;
-        self.contactMatchListView.hidden = NO;
-        
-        [UIView beginAnimations:nil context:NULL];
-        [UIView setAnimationDuration:kFadeAnimationDuration];
-        
-        self.contactMatchListView.alpha = 1.0;
-        
-        if (self.view.frame.size.height > self.defaultHeight)
-        {
-            CGRect frame = self.view.frame;
-            frame.origin.y = -frame.size.height + self.defaultHeight;
-            self.view.frame = frame;
-        }
-        
-        [UIView commitAnimations];
-        [self.contactMatchListView reloadData];
-	}
-	else
-		[self.contactMatchListView reloadData];
-	
-}
-
-- (void)hideContactMatchListViewAnimated:(BOOL)animated;
-{
-	if (self.contactMatchListView.hidden == NO)
-	{
-		if (animated)
-		{
-			[UIView beginAnimations:nil context:NULL];
-			[UIView setAnimationDuration:kFadeAnimationDuration];
-		}
-		self.contactMatchListView.alpha = 0.0;
-		
-		if (self.view.frame.origin.y < 0)
-		{
-			CGRect frame = self.view.frame;
-			frame.origin.y = 0;
-			self.view.frame = frame;
-		}
-        
-		if (animated)
-		{
-			[UIView setAnimationDelegate:self];
-			[UIView setAnimationDidStopSelector:@selector(hideContactMatchListAnimationDidStop)];
-			
-			[UIView commitAnimations];
-		}
-		else
-			self.contactMatchListView.hidden = YES;
-	}
-    
-}
-
-- (void)hideContactMatchListAnimationDidStop;
-{
-	self.contactMatchListView.hidden = YES;
 }
 
 #pragma mark - UITextFieldDelegate Methods

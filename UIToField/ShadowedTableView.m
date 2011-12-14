@@ -59,11 +59,11 @@
 	if (!originShadow)
 	{
 		originShadow = [self shadowAsInverse:NO];
-		[self.layer insertSublayer:originShadow atIndex:2];
+        [self.layer insertSublayer:originShadow above:self.layer];
 	}
-	else if (![[self.layer.sublayers objectAtIndex:2] isEqual:originShadow])
+	else if (![[self.layer.sublayers objectAtIndex:[self.layer.sublayers count] - 1] isEqual:originShadow])
 	{
-		[self.layer insertSublayer:originShadow atIndex:2];
+        [self.layer insertSublayer:originShadow above:self.layer];
 	}
 	
 	[CATransaction begin];

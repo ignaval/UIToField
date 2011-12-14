@@ -50,6 +50,8 @@
     Contact * contact2 = [NSEntityDescription insertNewObjectForEntityForName:@"Contact" inManagedObjectContext:self.context];
     Contact * contact3 = [NSEntityDescription insertNewObjectForEntityForName:@"Contact" inManagedObjectContext:self.context];
     Contact * contact4 = [NSEntityDescription insertNewObjectForEntityForName:@"Contact" inManagedObjectContext:self.context];
+    Contact * contact5 = [NSEntityDescription insertNewObjectForEntityForName:@"Contact" inManagedObjectContext:self.context];
+    Contact * contact6 = [NSEntityDescription insertNewObjectForEntityForName:@"Contact" inManagedObjectContext:self.context];
     
     contact1.name = @"John";
     contact1.address = @"john@john.com";
@@ -62,6 +64,12 @@
     
     contact4.name = @"Mary";
     contact4.address = @"mary@mary.com";
+    
+    contact5.name = @"Jim";
+    contact5.address = @"jim@jim.com";
+    
+    contact6.name = @"Janice";
+    contact6.address = @"janice@janice.com";
     
     NSError *error;
     
