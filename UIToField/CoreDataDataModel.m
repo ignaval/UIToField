@@ -194,6 +194,10 @@
 	[_recipients removeObject:recipient];
 }
 
+-(void)clearRecipients{
+    [_recipients removeAllObjects];
+}
+
 - (Recipient*)lastRecipient;
 {
 	return [_recipients lastObject];

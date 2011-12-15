@@ -17,6 +17,6 @@
     
 }
 
-@property (nonatomic, retain) IBOutlet RecipientController	*recipientController;
+@property (nonatomic, retain) RecipientController	*recipientController;
 
 @end

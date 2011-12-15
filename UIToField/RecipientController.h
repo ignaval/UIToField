@@ -34,6 +34,8 @@
 
 - (Recipient*)lastRecipient;
 
+-(void)clearRecipients;
+
 @property (nonatomic, readonly) NSArray *recipients;
 
 @optional
@@ -62,6 +64,9 @@
 
 -(void)setUpContactMatchView;
 -(id)initWithModel:(id<DataModelDelegate>)modelL;
+-(void)clearEntryField;
+-(void)setUpNameLabel;
+-(void)clearRecipients;
 
 @property (nonatomic, retain) IBOutlet UIButton			*addFromAddressBookButton;
 @property (nonatomic, retain) IBOutlet UITextField		*entryField;

@@ -25,6 +25,13 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
+        //Un comment according to the data model you want to use
+        
+        //ArrayDataModel * model = [[ArrayDataModel alloc] init];
+        CoreDataDataModel * model = [[CoreDataDataModel alloc] init];
+        
+        recipientController = [[RecipientController alloc] initWithModel:model];
+        [model release];
     }
     return self;
 }
@@ -33,7 +40,6 @@
     [super dealloc];
     
     [recipientController release];
-    self.recipientController = nil;
 }
 
 -(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event{
@@ -57,16 +63,10 @@
 {
     [super viewDidLoad];
     
-    //Un comment according to the data model you want to use
-    
-    //ArrayDataModel * model = [[ArrayDataModel alloc] init];
-    CoreDataDataModel * model = [[CoreDataDataModel alloc] init];
-    
-    recipientController = [[RecipientController alloc] initWithModel:model];
-    [model release];
-    
     [self.view addSubview:recipientController.view];
+    
     [self.recipientController setUpContactMatchView];
+    [self.recipientController setUpNameLabel];
 }
 
 - (void)viewDidUnload
@@ -101,5 +101,13 @@
     // Return YES for supported orientations
     return (interfaceOrientation != UIInterfaceOrientationPortraitUpsideDown);
 }
+
+//-(void)willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration{
+//    [self.recipientController willRotateToInterfaceOrientation:toInterfaceOrientation duration:duration];
+//}
+//
+//-(void)didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation{
+//    [self.recipientController didRotateFromInterfaceOrientation:fromInterfaceOrientation];
+//}
 
 @end

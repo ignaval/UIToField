@@ -63,6 +63,10 @@ NSString *blank = @" ";
     // Release any cached data, images, etc that aren't in use.
 }
 
+-(void)clearEntryField{
+    self.entryField.text = blank;
+}
+
 - (void)showContactMatchListView;
 {
 	if (self.contactMatchListView.hidden == YES)
@@ -138,6 +142,8 @@ NSString *blank = @" ";
 		}
 		else
 			self.contactMatchListView.hidden = YES;
+        
+        [self.contactMatchListView reloadData];
 	}
     
 }
@@ -254,7 +260,7 @@ NSString *blank = @" ";
     CGRect frameRect = self.view.superview.bounds;
     frameRect.origin.y = self.view.frame.size.height - self.view.frame.origin.y;
     
-    if (self.interfaceOrientation == UIInterfaceOrientationPortrait) {
+    if ([UIApplication sharedApplication].statusBarOrientation == UIInterfaceOrientationPortrait) {
         frameRect.size.height -= (self.view.frame.size.height + keyboardHeightPortrait);
     }else{
         frameRect.size.height -= (self.view.frame.size.width + keyboardHeightLandscape);
@@ -278,20 +284,22 @@ NSString *blank = @" ";
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
+    
+    self.addFromAddressBookButton = nil;
+	self.entryField = nil;
+	self.toLabel = nil;
+    self.namesLabel = nil;
+    
 }
 
 - (void)dealloc 
 {
-	self.addFromAddressBookButton = nil;
-	self.entryField = nil;
-	self.toLabel = nil;
-	self.selectedRecipientCell = nil;
     
     [model release];
-    self.model = nil;
     
     [navController release];
-    self.navController = nil;
+    
+    [selectedRecipientCell release];
     
     [super dealloc];
 }
@@ -313,7 +321,7 @@ NSString *blank = @" ";
     
     CGRect frame = self.contactMatchListView.frame;
     
-    if ([[UIDevice currentDevice] orientation] == UIInterfaceOrientationPortrait) {
+    if ([UIApplication sharedApplication].statusBarOrientation == UIInterfaceOrientationPortrait) {
         maxHeight = self.view.superview.frame.size.height - keyboardHeightPortrait - self.defaultHeight;
         frame.size.height = self.view.superview.frame.size.height - self.defaultHeight - keyboardHeightPortrait;
     }else{
@@ -503,6 +511,18 @@ NSString *blank = @" ";
     
     [UIView commitAnimations];
     
+}
+
+-(void)clearRecipients{
+    for (UIView *subView in self.view.subviews){
+        if ([subView isKindOfClass:[RecipientViewCell class]]){
+            [subView removeFromSuperview];
+        }
+    }
+    
+    [self.model clearRecipients];
+    
+    [self setUpNameLabel];
 }
 
 -(void)setUpNameLabel{
@@ -802,8 +822,6 @@ NSString *blank = @" ";
         returnCell.detailTextLabel.text = [model personAddressForIndexPath:indexPath];
     }
     
-    
-	
 	return returnCell;
 }
 
@@ -831,6 +849,18 @@ NSString *blank = @" ";
 -(BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation{
     return YES;
 }
+
+//-(void)willRotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration{
+//    
+//}
+//
+//-(void)didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation{
+//    if (self.interfaceOrientation == UIInterfaceOrientationPortrait) {
+//        NSLog(@"portrait");
+//    }else{
+//        NSLog(@"landscape");
+//    }
+//}
 
 
 @end
