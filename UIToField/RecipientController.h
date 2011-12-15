@@ -52,6 +52,7 @@
     UILabel         *namesLabel;
 	RecipientViewCell	*selectedRecipientCell;
 	CGFloat			defaultHeight;
+    CGFloat         lastHeight;
     
     UITableView			*contactMatchListView;
     
@@ -69,6 +70,7 @@
 
 @property (nonatomic, retain) RecipientViewCell			*selectedRecipientCell;
 @property (nonatomic, assign) CGFloat					defaultHeight;
+@property (nonatomic, assign) CGFloat					lastHeight;
 
 @property (nonatomic, retain) UITableView				*contactMatchListView;
 

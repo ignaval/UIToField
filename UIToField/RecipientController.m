@@ -15,7 +15,8 @@
 #define kEntryFieldDefaultWidth 230
 #define keyboardHeightPortrait      216
 #define keyboardHeightLandscape     162
-#define kFadeAnimationDuration		0.30
+#define kFadeInAnimationDuration	0.3
+#define kFadeOutAnimationDuration	0.15
 #define keyboardHeightPortrait      216
 #define keyboardHeightLandscape     162
 
@@ -26,6 +27,12 @@
 
 NSString *blank = @" ";
 
+@interface RecipientController()
+
+- (void)layoutSubviews;
+
+@end
+
 @implementation RecipientController
 
 @synthesize addFromAddressBookButton;
@@ -34,6 +41,7 @@ NSString *blank = @" ";
 @synthesize namesLabel;
 @dynamic selectedRecipientCell;
 @synthesize defaultHeight;
+@synthesize lastHeight;
 @synthesize model;
 @synthesize contactMatchListView;
 @synthesize navController;
@@ -62,15 +70,23 @@ NSString *blank = @" ";
 		self.contactMatchListView.alpha = 0.0;
         self.contactMatchListView.hidden = NO;
         
+        CGRect listFrame = self.contactMatchListView.frame;
+        listFrame.origin.y += (self.view.frame.size.height - self.defaultHeight);
+        self.contactMatchListView.frame = listFrame;
+        
         [UIView beginAnimations:nil context:NULL];
-        [UIView setAnimationDuration:kFadeAnimationDuration];
+        [UIView setAnimationDuration:kFadeInAnimationDuration];
         
         self.contactMatchListView.alpha = 1.0;
+        
+        listFrame.origin.y -= (self.view.frame.size.height - self.defaultHeight);
+        self.contactMatchListView.frame = listFrame;
         
         if (self.view.frame.size.height > self.defaultHeight)
         {
             CGRect frame = self.view.frame;
-            frame.origin.y = -frame.size.height + self.defaultHeight;
+            //frame.origin.y = -frame.size.height + self.defaultHeight;
+            frame.size.height = self.defaultHeight;
             self.view.frame = frame;
         }
         
@@ -86,18 +102,31 @@ NSString *blank = @" ";
 {
 	if (self.contactMatchListView.hidden == NO)
 	{
+//        self.contactMatchListView.hidden = YES;
+//        
+//        if (self.lastHeight > self.defaultHeight)
+//		{
+//			CGRect frame = self.view.frame;
+//			//frame.origin.y = 0;
+//            frame.size.height = self.lastHeight;
+//			self.view.frame = frame;
+//            
+//		}
+        
 		if (animated)
 		{
 			[UIView beginAnimations:nil context:NULL];
-			[UIView setAnimationDuration:kFadeAnimationDuration];
+			[UIView setAnimationDuration:kFadeOutAnimationDuration];
 		}
 		self.contactMatchListView.alpha = 0.0;
 		
-		if (self.view.frame.origin.y < 0)
+		if (self.lastHeight > self.defaultHeight)
 		{
 			CGRect frame = self.view.frame;
-			frame.origin.y = 0;
+			//frame.origin.y = 0;
+            frame.size.height = self.lastHeight;
 			self.view.frame = frame;
+            
 		}
         
 		if (animated)
@@ -164,6 +193,7 @@ NSString *blank = @" ";
     self.entryField.text = blank;
     
     self.defaultHeight = self.view.frame.size.height;
+    self.lastHeight = self.defaultHeight;
     
     UITapGestureRecognizer * tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleTap:)];
     [self.view addGestureRecognizer:tap];
@@ -285,10 +315,10 @@ NSString *blank = @" ";
     
     if ([[UIDevice currentDevice] orientation] == UIInterfaceOrientationPortrait) {
         maxHeight = self.view.superview.frame.size.height - keyboardHeightPortrait - self.defaultHeight;
-        frame.size.height = self.view.superview.frame.size.height - self.view.frame.size.height - keyboardHeightPortrait;
+        frame.size.height = self.view.superview.frame.size.height - self.defaultHeight - keyboardHeightPortrait;
     }else{
         maxHeight = self.view.superview.frame.size.width - keyboardHeightLandscape - self.defaultHeight;
-        frame.size.height = self.view.superview.frame.size.width - self.view.frame.size.height - keyboardHeightLandscape;
+        frame.size.height = self.view.superview.frame.size.width - self.defaultHeight - keyboardHeightLandscape;
     }
     
     self.contactMatchListView.frame = frame;
@@ -400,7 +430,8 @@ NSString *blank = @" ";
     view.contentSize = frameRect.size;
     
 	CGFloat newHeight = neededRows * growHeight;
-	if ( newHeight > self.defaultHeight )
+    
+    if ( newHeight > self.defaultHeight )
 	{
         //NSLog(@"new: %f max: %d",newHeight,maxHeight);
         if (newHeight > maxHeight) {
@@ -428,14 +459,26 @@ NSString *blank = @" ";
 			frameRect = self.view.frame;
 			frameRect.size.height = self.defaultHeight;
 			self.view.frame = frameRect;
-            view.contentSize = CGSizeMake(frameRect.size.width, frameRect.size.height);
+            view.contentSize = frameRect.size;
 			
 		}
 	}
     
+    self.lastHeight = self.view.frame.size.height;
+    
     CGRect buttonFrame = self.addFromAddressBookButton.frame;
     buttonFrame.origin = CGPointMake(rightInset + 4, view.contentSize.height - self.defaultHeight + kOriginShift);
     self.addFromAddressBookButton.frame = buttonFrame;
+    
+    //if the contactMatchList is visible, then the height must be the default one
+    if (!self.contactMatchListView.hidden)
+    {
+        CGRect frame = self.view.frame;
+        frame.size.height = self.defaultHeight;
+        self.view.frame = frame;
+        
+        [view scrollRectToVisible:CGRectMake(0, view.contentSize.height - self.defaultHeight, view.contentSize.width, self.defaultHeight) animated:NO];
+    }
 	
 }
 
