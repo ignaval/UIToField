@@ -10,10 +10,10 @@
 		FC017EDA147D646B001B731A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FC017ED9147D646B001B731A /* UIKit.framework */; };
 		FC017EDC147D646B001B731A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FC017EDB147D646B001B731A /* Foundation.framework */; };
 		FC017EDE147D646B001B731A /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FC017EDD147D646B001B731A /* CoreGraphics.framework */; };
+		FC1C4F58149ADD9A00D8B38C /* README in Resources */ = {isa = PBXBuildFile; fileRef = FC1C4F57149ADD9A00D8B38C /* README */; };
 		FC55C5991497376B00D085BE /* ExampleModel.xcdatamodel in Sources */ = {isa = PBXBuildFile; fileRef = FC55C5981497376B00D085BE /* ExampleModel.xcdatamodel */; };
 		FCD754851496ABC5007FE662 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = FCD7546C1496ABC5007FE662 /* AppDelegate.m */; };
 		FCD754861496ABC5007FE662 /* ArrayDataModel.m in Sources */ = {isa = PBXBuildFile; fileRef = FCD7546E1496ABC5007FE662 /* ArrayDataModel.m */; };
-		FCD754871496ABC5007FE662 /* contact-pill.png in Resources */ = {isa = PBXBuildFile; fileRef = FCD7546F1496ABC5007FE662 /* contact-pill.png */; };
 		FCD7548A1496ABC5007FE662 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = FCD754751496ABC5007FE662 /* main.m */; };
 		FCD7548B1496ABC5007FE662 /* Recipient.m in Sources */ = {isa = PBXBuildFile; fileRef = FCD754771496ABC5007FE662 /* Recipient.m */; };
 		FCD7548D1496ABC5007FE662 /* RecipientController.m in Sources */ = {isa = PBXBuildFile; fileRef = FCD7547B1496ABC5007FE662 /* RecipientController.m */; };
@@ -34,12 +34,12 @@
 		FC017ED9147D646B001B731A /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		FC017EDB147D646B001B731A /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		FC017EDD147D646B001B731A /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		FC1C4F57149ADD9A00D8B38C /* README */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README; sourceTree = SOURCE_ROOT; };
 		FC55C5981497376B00D085BE /* ExampleModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; name = ExampleModel.xcdatamodel; path = UIToField/ExampleModel.xcdatamodel; sourceTree = SOURCE_ROOT; };
 		FCD7546B1496ABC5007FE662 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = UIToField/AppDelegate.h; sourceTree = SOURCE_ROOT; };
 		FCD7546C1496ABC5007FE662 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AppDelegate.m; path = UIToField/AppDelegate.m; sourceTree = SOURCE_ROOT; };
 		FCD7546D1496ABC5007FE662 /* ArrayDataModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ArrayDataModel.h; path = UIToField/ArrayDataModel.h; sourceTree = SOURCE_ROOT; };
 		FCD7546E1496ABC5007FE662 /* ArrayDataModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ArrayDataModel.m; path = UIToField/ArrayDataModel.m; sourceTree = SOURCE_ROOT; };
-		FCD7546F1496ABC5007FE662 /* contact-pill.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "contact-pill.png"; path = "UIToField/contact-pill.png"; sourceTree = SOURCE_ROOT; };
 		FCD754751496ABC5007FE662 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = UIToField/main.m; sourceTree = SOURCE_ROOT; };
 		FCD754761496ABC5007FE662 /* Recipient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Recipient.h; path = UIToField/Recipient.h; sourceTree = SOURCE_ROOT; };
 		FCD754771496ABC5007FE662 /* Recipient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Recipient.m; path = UIToField/Recipient.m; sourceTree = SOURCE_ROOT; };
@@ -125,6 +125,7 @@
 				FC55C5981497376B00D085BE /* ExampleModel.xcdatamodel */,
 				FCD8B96F1497125C005334C5 /* Contact.h */,
 				FCD8B9701497125C005334C5 /* Contact.m */,
+				FC1C4F57149ADD9A00D8B38C /* README */,
 				FC017EE0147D646B001B731A /* Supporting Files */,
 			);
 			name = UIToField;
@@ -135,7 +136,6 @@
 			isa = PBXGroup;
 			children = (
 				FCD754931496AC42007FE662 /* InfoPlist.strings */,
-				FCD7546F1496ABC5007FE662 /* contact-pill.png */,
 				FCD754751496ABC5007FE662 /* main.m */,
 				FCD754811496ABC5007FE662 /* UIToField-Info.plist */,
 				FCD754821496ABC5007FE662 /* UIToField-Prefix.pch */,
@@ -209,10 +209,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FCD754871496ABC5007FE662 /* contact-pill.png in Resources */,
 				FCD7548E1496ABC5007FE662 /* RecipientController.xib in Resources */,
 				FCD754951496AC42007FE662 /* InfoPlist.strings in Resources */,
 				FCD754981496AC72007FE662 /* ViewController.xib in Resources */,
+				FC1C4F58149ADD9A00D8B38C /* README in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
