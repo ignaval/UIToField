@@ -10,7 +10,7 @@
 		FC017EDA147D646B001B731A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FC017ED9147D646B001B731A /* UIKit.framework */; };
 		FC017EDC147D646B001B731A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FC017EDB147D646B001B731A /* Foundation.framework */; };
 		FC017EDE147D646B001B731A /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FC017EDD147D646B001B731A /* CoreGraphics.framework */; };
-		FC1C4F58149ADD9A00D8B38C /* README in Resources */ = {isa = PBXBuildFile; fileRef = FC1C4F57149ADD9A00D8B38C /* README */; };
+		FC1C4F58149ADD9A00D8B38C /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = FC1C4F57149ADD9A00D8B38C /* README.md */; };
 		FC55C5991497376B00D085BE /* ExampleModel.xcdatamodel in Sources */ = {isa = PBXBuildFile; fileRef = FC55C5981497376B00D085BE /* ExampleModel.xcdatamodel */; };
 		FCD754851496ABC5007FE662 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = FCD7546C1496ABC5007FE662 /* AppDelegate.m */; };
 		FCD754861496ABC5007FE662 /* ArrayDataModel.m in Sources */ = {isa = PBXBuildFile; fileRef = FCD7546E1496ABC5007FE662 /* ArrayDataModel.m */; };
@@ -34,7 +34,7 @@
 		FC017ED9147D646B001B731A /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		FC017EDB147D646B001B731A /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		FC017EDD147D646B001B731A /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
-		FC1C4F57149ADD9A00D8B38C /* README */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README; sourceTree = SOURCE_ROOT; };
+		FC1C4F57149ADD9A00D8B38C /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = SOURCE_ROOT; };
 		FC55C5981497376B00D085BE /* ExampleModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; name = ExampleModel.xcdatamodel; path = UIToField/ExampleModel.xcdatamodel; sourceTree = SOURCE_ROOT; };
 		FCD7546B1496ABC5007FE662 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = UIToField/AppDelegate.h; sourceTree = SOURCE_ROOT; };
 		FCD7546C1496ABC5007FE662 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AppDelegate.m; path = UIToField/AppDelegate.m; sourceTree = SOURCE_ROOT; };
@@ -125,7 +125,7 @@
 				FC55C5981497376B00D085BE /* ExampleModel.xcdatamodel */,
 				FCD8B96F1497125C005334C5 /* Contact.h */,
 				FCD8B9701497125C005334C5 /* Contact.m */,
-				FC1C4F57149ADD9A00D8B38C /* README */,
+				FC1C4F57149ADD9A00D8B38C /* README.md */,
 				FC017EE0147D646B001B731A /* Supporting Files */,
 			);
 			name = UIToField;
@@ -212,7 +212,7 @@
 				FCD7548E1496ABC5007FE662 /* RecipientController.xib in Resources */,
 				FCD754951496AC42007FE662 /* InfoPlist.strings in Resources */,
 				FCD754981496AC72007FE662 /* ViewController.xib in Resources */,
-				FC1C4F58149ADD9A00D8B38C /* README in Resources */,
+				FC1C4F58149ADD9A00D8B38C /* README.md in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
