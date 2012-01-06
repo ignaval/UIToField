@@ -238,7 +238,10 @@ NSString *blank = @" ";
         {
             if ( CGRectContainsPoint(self.addFromAddressBookButton.frame, [sender locationInView:self.view]) )
             {
-                [self showFullContactList:self.addFromAddressBookButton];
+                if (self.addFromAddressBookButton.enabled) {
+                    [self showFullContactList:self.addFromAddressBookButton];
+                }
+                
             }else{
                 self.selectedRecipientCell.selected = NO;
                 self.selectedRecipientCell = nil;
