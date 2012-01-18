@@ -66,6 +66,7 @@
 -(id)initWithModel:(id<DataModelDelegate>)modelL;
 -(void)clearEntryField;
 -(void)setUpNameLabel;
+-(void)setUpRecipientCells;
 -(void)clearRecipients;
 
 @property (nonatomic, retain) IBOutlet UIButton			*addFromAddressBookButton;

@@ -205,9 +205,6 @@ NSString *blank = @" ";
     [self.view addGestureRecognizer:tap];
     [tap release];
     
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillHide) name:UIKeyboardWillHideNotification object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillShow) name:UIKeyboardWillShowNotification object:nil];
-    
 }
 
 - (void)handleTap:(UITapGestureRecognizer *)sender {
@@ -554,27 +551,16 @@ NSString *blank = @" ";
     [self layoutSubviews];
 }
 
--(void)keyboardWillHide{
-    //show one line name list
-    if ([self.entryField isFirstResponder]) {
-        [self setUpNameLabel];
-    }
-}
-
--(void)keyboardWillShow{
-    //show contact pills
-    if ([self.entryField isFirstResponder]) {
-        for (UIView *subView in self.view.subviews){
-            if ([subView isKindOfClass:[RecipientViewCell class]]){
-                subView.hidden = NO;
-            }
+-(void)setUpRecipientCells{
+    for (UIView *subView in self.view.subviews){
+        if ([subView isKindOfClass:[RecipientViewCell class]]){
+            subView.hidden = NO;
         }
-        
-        self.namesLabel.hidden = YES;
-        
-        [self layoutSubviews];
     }
     
+    self.namesLabel.hidden = YES;
+    
+    [self layoutSubviews];
 }
 
 - (RecipientViewCell*)selectedRecipientCell;
@@ -687,6 +673,17 @@ NSString *blank = @" ";
 	{
 		textField.text = blank;	
 	}
+    
+    if ([textField isEqual:self.entryField]) {
+        [self setUpRecipientCells];
+    }
+}
+
+-(void)textFieldDidEndEditing:(UITextField *)textField{
+    
+    if ([textField isEqual:self.entryField]) {
+        [self setUpNameLabel];
+    }
 }
 
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string; 
