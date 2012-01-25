@@ -165,7 +165,7 @@ NSString *blank = @" ";
     tableController.tableView.dataSource = self;
     
     if (!self.navController) {
-        self.navController = [[UINavigationController alloc] initWithRootViewController:tableController];
+        navController = [[UINavigationController alloc] initWithRootViewController:tableController];
     }
     
     self.navController.view.tag = navigationControllerTag;
@@ -300,6 +300,12 @@ NSString *blank = @" ";
     [navController release];
     
     [selectedRecipientCell release];
+    
+    [addFromAddressBookButton release];
+    [entryField release];
+    [toLabel release];
+    [namesLabel release];
+    [contactMatchListView release];
     
     [super dealloc];
 }
